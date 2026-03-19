@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>人人猎 (Renren Hunt) - V8 (全网追踪与清算明细)</title>
+    <title>人人猎 (Renren Hunt) - V17 (全网追踪与清算明细)</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
@@ -724,15 +724,14 @@
 
 
         function runAILocalScan(jobId) {
-            setTimeout(() => {
-                const job = jobs.find(j => j.id === jobId);
-                state.activeMatchJob = job;
-                document.getElementById('c1SelectedJobTitle').innerText = job.title;
-                document.getElementById('c1ExpectedPayout').innerText = `预估净赚: ${(job.bounty * 0.8 * 0.93).toLocaleString()} 元`; // ~93% after C1 tax
-                document.getElementById('c1Reason').value = '';
-                document.getElementById('ai-result').classList.remove('hidden');
-                document.getElementById('share-card').classList.add('hidden');
-            }, 500);
+            const job = jobs.find(j => j.id === jobId);
+            state.activeMatchJob = job;
+            document.getElementById('c1SelectedJobTitle').innerText = job.title;
+            document.getElementById('c1ExpectedPayout').innerText = `预估净赚: ${(job.bounty * 0.8 * 0.93).toLocaleString()} 元`;
+            document.getElementById('c1Reason').value = '';
+            document.getElementById('ai-result').classList.remove('hidden');
+            document.getElementById('share-card').classList.add('hidden');
+            document.getElementById('ai-result').scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
 
         function generateLink() {
