@@ -55,7 +55,7 @@
                 <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 hover:shadow-md transition">
                     <div class="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center text-orange-600 text-xl mb-4"><i class="fa-solid fa-shield-halved"></i></div>
                     <h3 class="font-bold text-lg mb-2">候选人：简历资产主权</h3>
-                    <p class="text-gray-500 text-sm">简历经 DID 加密，收到真实内推邀请后“先授权，后解密”，告别隐私裸奔与骚扰。</p>
+                    <p class="text-gray-500 text-sm">简历经 DID 加密，收到真实内推邀请后"先授权，后解密"，告别隐私裸奔与骚扰。</p>
                 </div>
             </div>
 
@@ -317,7 +317,7 @@
                             <p class="text-lg md:text-xl font-black text-gray-900 truncate" id="adminTVL">15,000</p>
                         </div>
                         <div class="bg-green-50 p-3 rounded-lg border border-green-100 col-span-1">
-                            <p class="text-xs text-green-600 whitespace-nowrap truncate font-bold mb-1">累计发放佣金(税前)</p>
+                            <p class="text-xs text-green-600 whitespace-nowrap truncate font-bold mb-1">累计发放佣金税前</p>
                             <p class="text-lg md:text-xl font-black text-gray-900 truncate" id="adminPayouts">345,000</p>
                         </div>
                         <div class="bg-purple-50 p-3 rounded-lg border border-purple-100 col-span-1">
@@ -441,8 +441,8 @@
         const globalData = {
             payoutsGross: 345000,
             revenueNet: 86250,
-            taxTotal: 28750, // Added Tax Tracking
-            c1TotalEarned: 9600 // Track current C1's historical earnings
+            taxTotal: 28750,
+            c1TotalEarned: 9600
         };
 
         const roleMeta = {
@@ -490,7 +490,6 @@
             document.querySelectorAll('.role-content').forEach(el => el.classList.add('hidden'));
             document.getElementById(`content-${roleId}`).classList.remove('hidden');
 
-            // Force sync all data views before opening
             if(roleId === 'b-role') { renderJobs(); renderBApps(); }
             if(roleId === 'c1-role') { renderC1View(); renderC1Jobs(); }
             if(roleId === 'c2-role') { renderC2View(); }
@@ -675,6 +674,7 @@
             }
         }
         function setHalfBounty() {
+
             const s = parseInt(document.getElementById("jobSalary").value) || 0;
             if(document.getElementById("jobBounty")) document.getElementById("jobBounty").value = s / 2;
         }
