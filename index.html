@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>人人猎 (Renren Hunt) - V17 (全网追踪与清算明细)</title>
+    <title>人人猎 (Renren Hunt) - V18 (网状信用网络)</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
@@ -14,15 +14,13 @@
         }
         .fade-in { animation: fadeIn 0.4s ease-out forwards; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
-        
         .modal-bg { backdrop-filter: blur(5px); }
-        
         ::-webkit-scrollbar { width: 6px; }
         ::-webkit-scrollbar-track { background: #f1f1f1; border-radius: 4px; }
         ::-webkit-scrollbar-thumb { background: #c7c7cc; border-radius: 4px; }
-        ::-webkit-scrollbar-thumb:hover { background: #a1a1aa; }
-
         .view-section { display: none; }
+        .trust-glow { box-shadow: 0 0 20px rgba(34, 197, 94, 0.3); }
+        .credit-bar { transition: width 0.5s ease-out; }
     </style>
 </head>
 <body class="bg-slate-50 min-h-screen font-sans text-gray-800">
@@ -34,76 +32,77 @@
         
         <div class="z-10 text-center max-w-4xl px-4 fade-in">
             <div class="mb-6 inline-block">
-                <span class="bg-indigo-50 text-indigo-600 px-4 py-1.5 rounded-full text-sm font-bold border border-indigo-100 shadow-sm"><i class="fa-solid fa-rocket mr-1"></i> 全球首创去中心化社交招聘网络</span>
+                <span class="bg-indigo-50 text-indigo-600 px-4 py-1.5 rounded-full text-sm font-bold border border-indigo-100 shadow-sm"><i class="fa-solid fa-network-wired mr-1"></i> 全球首创去中心化社交招聘网络</span>
             </div>
             <h1 class="text-6xl font-extrabold text-gray-900 tracking-tight mb-6">
                 人人猎 <span class="gradient-text font-black">Renren Hunt</span>
             </h1>
             <p class="text-2xl text-gray-600 mb-8 font-medium">重构职场信用体系，让人脉与信用安全变现</p>
             
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12 text-left">
-                <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 hover:shadow-md transition">
-                    <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center text-blue-600 text-xl mb-4"><i class="fa-solid fa-building"></i></div>
-                    <h3 class="font-bold text-lg mb-2">B端：降本 80%</h3>
-                    <p class="text-gray-500 text-sm">仅需支付 50% 月薪悬赏，取代高达年薪 30% 的传统猎头费。零坏账、零沉没成本。</p>
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-12 text-left">
+                <div class="bg-white p-5 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition">
+                    <div class="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center text-blue-600 text-lg mb-3"><i class="fa-solid fa-building"></i></div>
+                    <h3 class="font-bold mb-1">B端：降本 80%</h3>
+                    <p class="text-gray-500 text-xs">仅需支付 50% 月薪悬赏</p>
                 </div>
-                <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 hover:shadow-md transition">
-                    <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center text-green-600 text-xl mb-4"><i class="fa-solid fa-share-nodes"></i></div>
-                    <h3 class="font-bold text-lg mb-2">C端：人脉变现</h3>
-                    <p class="text-gray-500 text-sm">AI 扫描通讯录精准匹配，附带节点背书。推荐熟人入职立赚高额佣金，拒绝飞单。</p>
+                <div class="bg-white p-5 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition">
+                    <div class="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center text-green-600 text-lg mb-3"><i class="fa-solid fa-share-nodes"></i></div>
+                    <h3 class="font-bold mb-1">C1：人脉变现</h3>
+                    <p class="text-gray-500 text-xs">推荐熟人入职立赚佣金</p>
                 </div>
-                <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 hover:shadow-md transition">
-                    <div class="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center text-orange-600 text-xl mb-4"><i class="fa-solid fa-shield-halved"></i></div>
-                    <h3 class="font-bold text-lg mb-2">候选人：简历资产主权</h3>
-                    <p class="text-gray-500 text-sm">简历经 DID 加密，收到真实内推邀请后"先授权，后解密"，告别隐私裸奔与骚扰。</p>
+                <div class="bg-white p-5 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition">
+                    <div class="w-10 h-10 bg-orange-100 rounded-lg flex items-center justify-center text-orange-600 text-lg mb-3"><i class="fa-solid fa-user-astronaut"></i></div>
+                    <h3 class="font-bold mb-1">C2：隐私主权</h3>
+                    <p class="text-gray-500 text-xs">先授权、后解密</p>
+                </div>
+                <div class="bg-white p-5 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition">
+                    <div class="w-10 h-10 bg-purple-100 rounded-lg flex items-center justify-center text-purple-600 text-lg mb-3"><i class="fa-solid fa-shield-halved"></i></div>
+                    <h3 class="font-bold mb-1">网状信用</h3>
+                    <p class="text-gray-500 text-xs">全网实时评分</p>
                 </div>
             </div>
 
-            <button onclick="navTo('view-roles')" class="w-full md:w-auto mt-8 md:mt-12 bg-gray-900 text-white px-8 md:px-12 py-4 md:py-5 rounded-xl text-lg md:text-xl font-bold hover:bg-indigo-600 hover:shadow-lg transition transform hover:-translate-y-1 animate-bounce">
+            <button onclick="navTo('view-roles')" class="w-full md:w-auto mt-4 md:mt-8 bg-gray-900 text-white px-8 md:px-12 py-4 rounded-xl text-lg font-bold hover:bg-indigo-600 hover:shadow-lg transition transform hover:-translate-y-1">
                 🚀 进入沙盘演示系统 <i class="fa-solid fa-arrow-right ml-2"></i>
             </button>
         </div>
     </div>
 
     <!-- ================= VIEW 2: ROLE SELECTION ================= -->
-    <div id="view-roles" class="view-section min-h-screen bg-slate-50 py-20 px-4">
+    <div id="view-roles" class="view-section min-h-screen bg-slate-50 py-16 px-4">
         <div class="max-w-5xl mx-auto fade-in">
-            <div class="text-center mb-12">
-                <h2 class="text-4xl font-extrabold text-gray-900 mb-4">选择您的登录角色</h2>
-                <p class="text-gray-500">在沙盘中自由切换身份，体验 C2C2B 闭环的完整工作流。</p>
+            <div class="text-center mb-10">
+                <h2 class="text-3xl font-extrabold text-gray-900 mb-3">选择您的登录角色</h2>
+                <p class="text-gray-500">体验 C2C2B 闭环的完整工作流 · 感受网状信用网络</p>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                <!-- Role B -->
-                <div onclick="loginAs('b-role')" class="bg-white rounded-2xl p-8 border border-gray-200 shadow-sm hover:shadow-xl hover:border-indigo-400 cursor-pointer transition transform hover:-translate-y-2 group text-center">
-                    <div class="w-20 h-20 mx-auto bg-gradient-to-br from-blue-500 to-indigo-600 rounded-2xl shadow-lg shadow-indigo-500/30 flex items-center justify-center text-white text-3xl mb-6 transform group-hover:scale-105 group-hover:-rotate-3 transition duration-300 border border-white/20"><i class="fa-solid fa-building-user"></i></div>
-                    <h3 class="text-xl font-bold mb-2">企业用人端</h3>
-                    <p class="text-gray-500 text-sm">发布岗位，支付小额费用解锁投递者联系方式，最终录用。</p>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <div onclick="loginAs('b-role')" class="bg-white rounded-2xl p-6 border border-gray-200 shadow-sm hover:shadow-xl hover:border-blue-400 cursor-pointer transition transform hover:-translate-y-2 group text-center">
+                    <div class="w-16 h-16 mx-auto bg-gradient-to-br from-blue-500 to-indigo-600 rounded-2xl flex items-center justify-center text-white text-2xl mb-4"><i class="fa-solid fa-building-user"></i></div>
+                    <h3 class="font-bold mb-1">企业用人端</h3>
+                    <p class="text-gray-500 text-xs">HR / 招聘经理</p>
                 </div>
 
-                <!-- Role C1 -->
-                <div onclick="loginAs('c1-role')" class="bg-white rounded-2xl p-8 border border-gray-200 shadow-sm hover:shadow-xl hover:border-green-400 cursor-pointer transition transform hover:-translate-y-2 group text-center">
-                    <div class="w-20 h-20 mx-auto bg-gradient-to-br from-emerald-400 to-teal-500 rounded-2xl shadow-lg shadow-teal-500/30 flex items-center justify-center text-white text-3xl mb-6 transform group-hover:scale-105 group-hover:rotate-3 transition duration-300 border border-white/20"><i class="fa-solid fa-people-pulling"></i></div>
-                    <h3 class="text-xl font-bold mb-2">C1推荐人</h3>
-                    <p class="text-gray-500 text-sm">AI 扫描人脉，填写关键评价推荐前同事，追踪进度赚取悬赏。</p>
+                <div onclick="loginAs('c1-role')" class="bg-white rounded-2xl p-6 border border-gray-200 shadow-sm hover:shadow-xl hover:border-green-400 cursor-pointer transition transform hover:-translate-y-2 group text-center">
+                    <div class="w-16 h-16 mx-auto bg-gradient-to-br from-emerald-400 to-teal-500 rounded-2xl flex items-center justify-center text-white text-2xl mb-4"><i class="fa-solid fa-people-pulling"></i></div>
+                    <h3 class="font-bold mb-1">C1推荐人</h3>
+                    <p class="text-gray-500 text-xs">人脉变现专家</p>
                 </div>
 
-                <!-- Role C2 -->
-                <div onclick="loginAs('c2-role')" class="bg-white rounded-2xl p-8 border border-gray-200 shadow-sm hover:shadow-xl hover:border-orange-400 cursor-pointer transition transform hover:-translate-y-2 group text-center">
-                    <div class="w-20 h-20 mx-auto bg-gradient-to-br from-orange-400 to-pink-500 rounded-2xl shadow-lg shadow-orange-500/30 flex items-center justify-center text-white text-3xl mb-6 transform group-hover:scale-105 group-hover:-rotate-3 transition duration-300 border border-white/20"><i class="fa-solid fa-user-astronaut"></i></div>
-                    <h3 class="text-xl font-bold mb-2">C2候选人</h3>
-                    <p class="text-gray-500 text-sm">管理个人多份主权简历，接收内推卡，签名解密投递与追踪。</p>
+                <div onclick="loginAs('c2-role')" class="bg-white rounded-2xl p-6 border border-gray-200 shadow-sm hover:shadow-xl hover:border-orange-400 cursor-pointer transition transform hover:-translate-y-2 group text-center">
+                    <div class="w-16 h-16 mx-auto bg-gradient-to-br from-orange-400 to-pink-500 rounded-2xl flex items-center justify-center text-white text-2xl mb-4"><i class="fa-solid fa-user-astronaut"></i></div>
+                    <h3 class="font-bold mb-1">C2候选人</h3>
+                    <p class="text-gray-500 text-xs">职场数字资产</p>
                 </div>
 
-                <!-- Role Admin -->
-                <div onclick="loginAs('admin-role')" class="bg-white rounded-2xl p-8 border border-gray-200 shadow-sm hover:shadow-xl hover:border-purple-400 cursor-pointer transition transform hover:-translate-y-2 group text-center">
-                    <div class="w-20 h-20 mx-auto bg-gradient-to-br from-purple-500 to-fuchsia-600 rounded-2xl shadow-lg shadow-purple-500/30 flex items-center justify-center text-white text-3xl mb-6 transform group-hover:scale-105 group-hover:rotate-3 transition duration-300 border border-white/20"><i class="fa-solid fa-shield-halved"></i></div>
-                    <h3 class="text-xl font-bold mb-2">平台管理员</h3>
-                    <p class="text-gray-500 text-sm">大盘追踪，查看全网所有流转中的推荐订单及详细税务清算明细。</p>
+                <div onclick="loginAs('admin-role')" class="bg-white rounded-2xl p-6 border border-gray-200 shadow-sm hover:shadow-xl hover:border-purple-400 cursor-pointer transition transform hover:-translate-y-2 group text-center">
+                    <div class="w-16 h-16 mx-auto bg-gradient-to-br from-purple-500 to-fuchsia-600 rounded-2xl flex items-center justify-center text-white text-2xl mb-4"><i class="fa-solid fa-shield-halved"></i></div>
+                    <h3 class="font-bold mb-1">平台管理员</h3>
+                    <p class="text-gray-500 text-xs">信用引擎控制台</p>
                 </div>
             </div>
             
-            <div class="mt-12 text-center">
+            <div class="mt-10 text-center">
                 <button onclick="navTo('view-landing')" class="text-gray-400 hover:text-gray-600"><i class="fa-solid fa-arrow-left mr-1"></i> 返回首页</button>
             </div>
         </div>
@@ -111,244 +110,399 @@
 
     <!-- ================= VIEW 3: MAIN APP DASHBOARD ================= -->
     <div id="view-app" class="view-section min-h-screen bg-slate-50">
-        <!-- Dashboard Navbar -->
         <nav class="bg-white shadow-sm border-b border-gray-200 sticky top-0 z-50">
-            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="flex justify-between items-center min-h-[4rem] py-2">
-                    <div class="flex items-center shrink-0">
-                        <i class="fa-solid fa-link text-indigo-600 text-lg md:text-2xl mr-1 md:mr-2"></i>
-                        <span class="text-base md:text-xl font-bold text-gray-900 mr-2 md:mr-6">人人猎</span>
-                        <span id="currentRoleBadge" class="hidden md:inline bg-gray-100 text-gray-700 px-3 py-1 rounded-md text-sm font-bold border border-gray-200 shadow-inner">
-                            当前角色: --
-                        </span>
+            <div class="max-w-6xl mx-auto px-4 py-3">
+                <div class="flex justify-between items-center">
+                    <div class="flex items-center">
+                        <i class="fa-solid fa-link text-indigo-600 text-xl mr-2"></i>
+                        <span class="text-lg font-bold text-gray-900">人人猎</span>
+                        <span id="currentRoleBadge" class="hidden md:inline ml-3 bg-gray-100 text-gray-700 px-2 py-0.5 rounded text-xs font-bold">--</span>
                     </div>
-                    <div class="flex items-center space-x-2 md:space-x-4 overflow-x-auto overflow-y-hidden" style="scrollbar-width: none;">
-                        <button onclick="navTo('view-landing')" class="hidden md:inline text-sm text-gray-500 hover:text-indigo-600 transition font-medium"><i class="fa-solid fa-house mr-1"></i> 返回主页</button>
-                        <div class="hidden md:block h-6 w-px bg-gray-300"></div>
-                        <button onclick="navTo('view-roles')" class="bg-indigo-100 text-indigo-700 hover:bg-indigo-200 hover:text-indigo-800 px-3 md:px-4 py-1.5 md:py-2 rounded-lg text-xs md:text-sm font-bold transition shadow-sm border border-indigo-200 animate-pulse-slow whitespace-nowrap"><i class="fa-solid fa-users-arrows mr-1"></i> 切换角色</button>
-                        <div class="h-6 w-px bg-gray-300"></div>
-                        <span class="hidden lg:inline text-sm text-gray-500 bg-gray-50 border border-gray-200 px-3 py-1 rounded-full"><i class="fa-solid fa-network-wired mr-1 text-purple-500"></i> Polygon</span>
-                        <button id="walletBtn" onclick="connectWallet()" class="bg-indigo-600 text-white px-3 md:px-4 py-1.5 md:py-2 rounded-lg text-xs md:text-sm font-medium hover:bg-indigo-700 transition shadow-sm whitespace-nowrap">
-                            <i class="fa-solid fa-wallet md:mr-1"></i> <span class="hidden md:inline">模拟连接钱包</span><span class="md:inline hidden">连接钱包</span><span class="inline md:hidden">钱包</span>
+                    <div class="flex items-center space-x-3">
+                        <button onclick="navTo('view-roles')" class="bg-indigo-100 text-indigo-700 px-3 py-1.5 rounded-lg text-xs font-bold"><i class="fa-solid fa-users-arrows mr-1"></i> 切换</button>
+                        <button id="walletBtn" onclick="connectWallet()" class="bg-indigo-600 text-white px-3 py-1.5 rounded-lg text-xs font-medium hover:bg-indigo-700">
+                            <i class="fa-solid fa-wallet mr-1"></i> 连接钱包
                         </button>
                     </div>
                 </div>
             </div>
         </nav>
 
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-            <!-- Dynamic Slogan Header -->
-            <div class="text-center mb-6 md:mb-8 py-2 md:py-4 flex flex-col justify-center transition-all duration-300 fade-in" id="dashHeader">
-                <h1 class="text-2xl md:text-3xl font-extrabold text-gray-900 tracking-tight mb-2 px-2" id="mainTitle">--</h1>
-                <p class="text-gray-600 max-w-2xl mx-auto text-sm" id="mainSubtitle">--</p>
+        <div class="max-w-6xl mx-auto px-4 py-6">
+            <div class="text-center mb-6">
+                <h1 class="text-2xl font-extrabold text-gray-900" id="mainTitle">--</h1>
+                <p class="text-gray-500 text-sm" id="mainSubtitle">--</p>
             </div>
 
-            <!-- Role Specific Containers -->
-            <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-4 md:p-8 min-h-[500px] fade-in relative">
+            <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-4 md:p-6 min-h-[400px]">
                 
                 <!-- ====== B ROLE CONTENT ====== -->
                 <div id="content-b-role" class="role-content hidden">
-                    <div class="flex flex-col sm:flex-row justify-between sm:items-center mb-4 md:mb-6 gap-3">
+                    <div class="flex justify-between items-center mb-6">
                         <div>
-                            <h2 class="text-xl md:text-2xl font-bold text-gray-800">我的企业悬赏板</h2>
-                            <p class="text-gray-500 text-sm mt-1">管理招聘需求，锁定资金以全网激活隐性人脉。</p>
+                            <h2 class="text-xl font-bold text-gray-800">企业悬赏管理台</h2>
+                            <p class="text-gray-500 text-sm">精准对接 · 极速结算</p>
                         </div>
-                        <button onclick="openJobModal()" class="bg-indigo-600 text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-indigo-700 transition shadow-sm whitespace-nowrap">
-                            <i class="fa-solid fa-plus mr-1"></i> 发布新职位
+                        <button onclick="openJobModal()" class="bg-indigo-600 text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-indigo-700">
+                            <i class="fa-solid fa-plus mr-1"></i> 发布职位
                         </button>
                     </div>
                     
-                    <!-- B Role Inbox FIRST (mobile priority) -->
-                    <div class="mb-6 md:mb-8">
-                        <h3 class="text-lg md:text-xl font-bold text-gray-800 mb-3 flex items-center justify-between">
-                            <span><i class="fa-solid fa-inbox text-indigo-500 mr-2"></i> 收到的人才投递 <span class="text-xs bg-red-100 text-red-600 px-2 py-0.5 rounded-full" id="bInboxCount">0</span></span>
-                        </h3>
-                        <div id="bAppListContainer" class="space-y-3"></div>
-                    </div>
-                    
-                    <!-- Hired List (secondary) -->
-                    <div class="mb-6 md:mb-8">
-                        <h3 class="text-lg md:text-xl font-bold text-gray-800 mb-3"><i class="fa-solid fa-award text-green-500 mr-2"></i> 已录用与完成名单</h3>
-                        <div id="bHiredListContainer" class="space-y-3"></div>
-                    </div>
-                    
-                    <!-- Job List (last on mobile) -->
-                    <div class="border-t border-gray-200 pt-6 md:pt-8 mt-6 md:mt-10">
-                        <h3 class="text-lg md:text-xl font-bold text-gray-800 mb-4">我的悬赏职位</h3>
-                        <div id="jobListContainer" class="space-y-4"></div>
+                    <!-- 顾问集市 Tab -->
+                    <div class="mb-6">
+                        <div class="flex border-b border-gray-200 mb-4">
+                            <button onclick="switchBTab('inbox')" id="bTab-inbox" class="px-4 py-2 text-sm font-bold border-b-2 border-indigo-600 text-indigo-600">收到投递</button>
+                            <button onclick="switchBTab('market')" id="bTab-market" class="px-4 py-2 text-sm font-bold border-b-2 border-transparent text-gray-500 hover:text-gray-700">优选顾问集市</button>
+                            <button onclick="switchBTab('jobs')" id="bTab-jobs" class="px-4 py-2 text-sm font-bold border-b-2 border-transparent text-gray-500 hover:text-gray-700">我的职位</button>
+                        </div>
+                        
+                        <!-- 收到投递列表 -->
+                        <div id="bPanel-inbox">
+                            <div id="bAppListContainer" class="space-y-3"></div>
+                        </div>
+                        
+                        <!-- 优选顾问集市 -->
+                        <div id="bPanel-market" class="hidden">
+                            <div class="bg-gradient-to-r from-green-50 to-teal-50 p-4 rounded-lg mb-4 border border-green-100">
+                                <h4 class="font-bold text-green-800 mb-2"><i class="fa-solid fa-star mr-1"></i> 高信用顾问推荐</h4>
+                                <p class="text-sm text-green-600">以下推荐人已完成多笔成功推荐，靠谱度 > 85%</p>
+                            </div>
+                            <div id="c1MarketList" class="grid grid-cols-1 md:grid-cols-2 gap-3"></div>
+                        </div>
+                        
+                        <!-- 我的职位列表 -->
+                        <div id="bPanel-jobs" class="hidden">
+                            <div id="jobListContainer" class="space-y-4"></div>
+                        </div>
                     </div>
                 </div>
 
                 <!-- ====== C1 ROLE CONTENT ====== -->
                 <div id="content-c1-role" class="role-content hidden">
-                    
-                    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
-                        <!-- Left: Job Pool & Matching -->
-                        <div class="col-span-1 lg:col-span-2 border-b lg:border-b-0 lg:border-r border-gray-100 pb-6 lg:pb-0 pr-0 lg:pr-8">
-                            <div class="flex justify-between items-center mb-6">
-                                <div>
-                                    <h2 class="text-2xl font-bold text-gray-800">全网高薪悬赏池</h2>
-                                    <p class="text-gray-500 text-sm mt-1">发现真实锁资岗位，AI 扫描通讯录一键撰写推荐信。</p>
+                    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                        <!-- 左侧：Trust Score + 职位池 -->
+                        <div class="lg:col-span-2">
+                            <!-- Trust Score 看板 -->
+                            <div class="bg-gradient-to-r from-emerald-500 to-teal-600 rounded-xl p-5 text-white mb-6 trust-glow">
+                                <div class="flex justify-between items-start mb-4">
+                                    <div>
+                                        <h3 class="text-sm font-medium text-emerald-100">我的靠谱度评分</h3>
+                                        <p class="text-4xl font-black mt-1" id="c1TrustScore">92</p>
+                                        <p class="text-xs text-emerald-200 mt-1">基于 28 次推荐数据</p>
+                                    </div>
+                                    <div class="text-right">
+                                        <p class="text-xs text-emerald-200">等级</p>
+                                        <p class="text-lg font-bold">⭐ 金牌顾问</p>
+                                        <p class="text-xs text-emerald-200 mt-1">Top 15%</p>
+                                    </div>
+                                </div>
+                                <div class="bg-white/20 rounded-lg p-3">
+                                    <div class="flex justify-between text-xs mb-1">
+                                        <span>信用权益解锁进度</span>
+                                        <span id="c1CreditProgress">92%</span>
+                                    </div>
+                                    <div class="h-2 bg-white/30 rounded-full">
+                                        <div class="credit-bar h-full bg-white rounded-full" id="c1CreditBar" style="width: 92%"></div>
+                                    </div>
+                                    <div class="flex justify-between text-xs mt-2 text-emerald-100">
+                                        <span>解锁：优先推荐</span>
+                                        <span>解锁：阶梯赏金 +15%</span>
+                                    </div>
                                 </div>
                             </div>
-                            <div id="c1JobList" class="grid grid-cols-1 gap-4 mb-6"></div>
-                            <div id="ai-result" class="hidden mb-6 md:mb-8 border-2 border-dashed border-indigo-200 bg-indigo-50/50 rounded-xl pt-6 mt-0">
-                                <h4 class="font-bold text-gray-700 mb-3 flex items-center"><i class="fa-solid fa-brain text-indigo-500 mr-2 text-xl"></i> AI 知识图谱寻猎</h4>
-                                <div class="bg-white border border-green-200 rounded-lg p-5 shadow-sm">
+                            
+                            <!-- 双向评价入口 -->
+                            <div class="bg-orange-50 border border-orange-200 rounded-lg p-4 mb-6">
+                                <h4 class="font-bold text-orange-800 mb-2"><i class="fa-solid fa-chart-line mr-1"></i> 双向评价反馈</h4>
+                                <div class="grid grid-cols-2 gap-4 text-sm">
+                                    <div class="bg-white rounded p-3">
+                                        <p class="text-gray-500 text-xs">B端(企业)评分</p>
+                                        <p class="text-xl font-bold text-blue-600" id="c1BFeedback">4.8</p>
+                                        <p class="text-xs text-gray-400">基于12次反馈</p>
+                                    </div>
+                                    <div class="bg-white rounded p-3">
+                                        <p class="text-gray-500 text-xs">C2(候选人)评分</p>
+                                        <p class="text-xl font-bold text-purple-600" id="c1C2Feedback">4.9</p>
+                                        <p class="text-xs text-gray-400">基于8次反馈</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- 全网悬赏池 -->
+                            <h3 class="font-bold text-gray-800 mb-3"><i class="fa-solid fa-briefcase mr-2 text-indigo-500"></i>全网高薪悬赏池</h3>
+                            <div id="c1JobList" class="grid grid-cols-1 gap-3 mb-4"></div>
+                            
+                            <!-- AI 知识图谱寻猎 -->
+                            <div id="ai-result" class="hidden border-2 border-dashed border-indigo-300 bg-indigo-50 rounded-xl p-5 mt-4">
+                                <h4 class="font-bold text-gray-700 mb-3"><i class="fa-solid fa-brain text-indigo-500 mr-2"></i>AI 知识图谱寻猎</h4>
+                                <div class="bg-white border border-green-200 rounded-lg p-4">
                                     <div class="flex justify-between items-start mb-3 border-b border-gray-100 pb-3">
                                         <div>
-                                            <h5 class="font-bold text-gray-900 text-lg" id="c1SelectedJobTitle">--</h5>
-                                            <p class="text-indigo-600 font-bold mt-1 bg-indigo-50 inline-block px-2 py-0.5 rounded text-sm" id="c1ExpectedPayout">--</p>
+                                            <h5 class="font-bold text-gray-900" id="c1SelectedJobTitle">--</h5>
+                                            <p class="text-indigo-600 font-bold text-sm mt-1" id="c1ExpectedPayout">--</p>
                                         </div>
+                                        <span class="bg-green-100 text-green-800 text-xs px-2 py-1 rounded font-bold">匹配度 96%</span>
                                     </div>
-                                    <div class="flex items-center justify-between mb-3">
-                                        <div class="flex items-center">
-                                            <div class="w-10 h-10 bg-indigo-100 rounded-full flex items-center justify-center text-indigo-600 font-bold mr-3">林</div>
+                                    
+                                    <!-- 结构化推荐工作台 -->
+                                    <div class="bg-orange-50 p-4 rounded-lg">
+                                        <h5 class="font-bold text-orange-800 mb-2"><i class="fa-solid fa-pen-to-square mr-1"></i>结构化推荐评价（背调前置）</h5>
+                                        <div class="grid grid-cols-1 md:grid-cols-2 gap-3 mb-3">
                                             <div>
-                                                <h5 class="font-bold text-gray-900 flex items-center">林大牛 <span class="bg-green-100 text-green-800 text-xs px-2 py-0.5 rounded ml-2">匹配度 96%</span></h5>
-                                                <p class="text-sm text-gray-500 mt-0.5">你的前下属 | 现任大厂核心骨干</p>
+                                                <label class="text-xs text-orange-700 mb-1 block">与候选人关系</label>
+                                                <select id="c1Relation" class="w-full border border-orange-200 rounded p-2 text-sm bg-white"><option>前同事</option><option>前下属</option><option>同学</option><option>朋友</option></select>
+                                            </div>
+                                            <div>
+                                                <label class="text-xs text-orange-700 mb-1 block">共事时长</label>
+                                                <select id="c1WorkDuration" class="w-full border border-orange-200 rounded p-2 text-sm bg-white"><option>不到1年</option><option>1-2年</option><option>2-3年</option><option>3年以上</option></select>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="mt-3 bg-orange-50 p-4 rounded-lg">
-                                        <label class="block text-sm font-bold text-orange-800 mb-1"><i class="fa-solid fa-pen-to-square mr-1"></i> 填写关键推荐理由</label>
-                                        <div class="flex gap-2 mb-2">
-                                            <div class="flex-1"><label class="block text-xs text-orange-700 mb-1">你和TA的关系</label>
-                                                <select id="c1Relation" class="w-full border border-orange-200 rounded p-2 text-sm focus:ring-2 focus:ring-orange-400 outline-none bg-white"><option>前同事</option><option>朋友</option><option>校友</option></select>
-                                            </div>
-                                            <div class="flex-1"><label class="block text-xs text-orange-700 mb-1">内推话术 <span class="text-gray-400">(展示给TA)</span></label>
-                                                <input id="c1Pitch" class="w-full border border-orange-200 rounded p-2 text-sm focus:ring-2 focus:ring-orange-400 outline-none" value="这岗位挺契合你，薪资也不错！">
+                                        <div class="mb-3">
+                                            <label class="text-xs text-orange-700 mb-1 block">技术能力 (1-5星)</label>
+                                            <div class="flex gap-1" id="c1TechRating">
+                                                <button onclick="setRating('tech', 1)" class="text-2xl text-gray-300 hover:text-yellow-400">★</button>
+                                                <button onclick="setRating('tech', 2)" class="text-2xl text-gray-300 hover:text-yellow-400">★</button>
+                                                <button onclick="setRating('tech', 3)" class="text-2xl text-gray-300 hover:text-yellow-400">★</button>
+                                                <button onclick="setRating('tech', 4)" class="text-2xl text-yellow-400">★</button>
+                                                <button onclick="setRating('tech', 5)" class="text-2xl text-gray-300 hover:text-yellow-400">★</button>
                                             </div>
                                         </div>
-                                        <textarea id="c1Reason" class="w-full border border-orange-200 rounded-lg p-2 text-sm focus:ring-2 focus:ring-orange-400 outline-none" rows="2" placeholder="在此填写你的核心背书评价(仅发给HR)..."></textarea>
-                                        <button onclick="generateLink()" class="mt-2 w-full bg-orange-600 text-white px-5 py-2 rounded-lg text-sm font-bold hover:bg-orange-700 transition">
-                                            <i class="fa-solid fa-paper-plane mr-1"></i> 确认背书并生成专属内推卡
+                                        <div class="mb-3">
+                                            <label class="text-xs text-orange-700 mb-1 block">沟通协作 (1-5星)</label>
+                                            <div class="flex gap-1" id="c1CommRating">
+                                                <button onclick="setRating('comm', 1)" class="text-2xl text-gray-300 hover:text-yellow-400">★</button>
+                                                <button onclick="setRating('comm', 2)" class="text-2xl text-yellow-400">★</button>
+                                                <button onclick="setRating('comm', 3)" class="text-2xl text-gray-300 hover:text-yellow-400">★</button>
+                                                <button onclick="setRating('comm', 4)" class="text-2xl text-gray-300 hover:text-yellow-400">★</button>
+                                                <button onclick="setRating('comm', 5)" class="text-2xl text-gray-300 hover:text-yellow-400">★</button>
+                                            </div>
+                                        </div>
+                                        <textarea id="c1Reason" class="w-full border border-orange-200 rounded-lg p-2 text-sm mb-2" rows="2" placeholder="核心背书评价（仅发给HR）..."></textarea>
+                                        <textarea id="c1Pitch" class="w-full border border-orange-200 rounded-lg p-2 text-sm mb-2" rows="1" placeholder="给候选人的内推话术..."></textarea>
+                                        <button onclick="generateLink()" class="w-full bg-orange-600 text-white px-4 py-2 rounded-lg text-sm font-bold hover:bg-orange-700">
+                                            <i class="fa-solid fa-paper-plane mr-1"></i> 确权上链 · 生成内推卡
                                         </button>
                                     </div>
                                 </div>
-                                <div id="share-card" class="hidden mt-4 bg-gray-50 p-4 rounded-lg border border-indigo-200 relative shadow-inner">
-                                    <span class="absolute top-2 right-2 bg-indigo-100 text-indigo-700 text-xs px-2 py-1 rounded cursor-pointer font-bold"><i class="fa-regular fa-copy mr-1"></i> 复制话术</span>
-                                    <p class="text-sm text-gray-800 font-mono" id="shareText"></p>
+                                <div id="share-card" class="hidden mt-4 bg-gray-100 p-3 rounded-lg border border-indigo-200">
+                                    <p class="text-sm text-gray-700 font-mono" id="shareText"></p>
+                                    <p class="text-xs text-gray-500 mt-1">🔗 推荐全链路节点已上链，防飞单</p>
                                 </div>
                             </div>
                         </div>
 
-                        <!-- Right: My Referrals & Commission -->
+                        <!-- 右侧：收益中心 -->
                         <div>
-                            <div class="bg-gradient-to-r from-indigo-600 to-purple-600 rounded-xl p-5 text-white shadow-md mb-6">
-                                <h3 class="text-sm font-medium text-indigo-100 mb-1">累计已赚取佣金 (元)</h3>
-                                <p class="text-3xl font-black mb-4" id="c1TotalEarned">0</p>
-                                <div class="flex justify-between border-t border-indigo-400/50 pt-3">
+                            <div class="bg-gradient-to-r from-indigo-600 to-purple-600 rounded-xl p-5 text-white mb-4">
+                                <h3 class="text-sm font-medium text-indigo-200">累计已赚取</h3>
+                                <p class="text-3xl font-black" id="c1TotalEarned">9,600</p>
+                                <div class="flex justify-between mt-3 pt-3 border-t border-indigo-400/50">
                                     <div>
-                                        <p class="text-xs text-indigo-200">待结算 (流转中)</p>
+                                        <p class="text-xs text-indigo-200">待结算</p>
                                         <p class="font-bold text-sm" id="c1PendingEarned">0</p>
                                     </div>
                                     <div>
-                                        <p class="text-xs text-indigo-200">成功率</p>
-                                        <p class="font-bold text-sm">68.5%</p>
+                                        <p class="text-xs text-indigo-200">成功笔数</p>
+                                        <p class="font-bold text-sm">5</p>
                                     </div>
                                 </div>
                             </div>
-
-                            <div class="mb-3">
-                                <h3 class="text-lg font-bold text-gray-800"><i class="fa-solid fa-list-check text-indigo-500 mr-1"></i> 我的推荐追踪</h3>
-                            </div>
-                            <div id="c1ReferralList" class="space-y-3 max-h-[500px] overflow-y-auto pr-1">
-                                <!-- Rendered by JS -->
-                            </div>
+                            
+                            <h3 class="font-bold text-gray-800 mb-3"><i class="fa-solid fa-list-check mr-1 text-indigo-500"></i>推荐追踪</h3>
+                            <div id="c1ReferralList" class="space-y-2 max-h-[400px] overflow-y-auto"></div>
                         </div>
                     </div>
                 </div>
 
-
-                            <!-- ====== C2 ROLE CONTENT ====== -->
+                <!-- ====== C2 ROLE CONTENT ====== -->
                 <div id="content-c2-role" class="role-content hidden">
-                    <!-- 1. 收到的内推邀请 - TOP PRIORITY (full width) -->
-                    <div class="mb-6 md:mb-8">
-                        <div class="flex justify-between items-center mb-4">
-                            <h3 class="text-xl md:text-2xl font-bold text-gray-800"><i class="fa-solid fa-envelope-open-text text-orange-500 mr-2"></i> 收到的内推邀请 <span class="text-xs bg-orange-100 text-orange-700 px-2 py-0.5 rounded-full" id="c2PendingCount">0</span></h3>
-                        </div>
-                        <div id="c2PendingList" class="space-y-3"></div>
-                    </div>
-
-                    <!-- 2. 我的主权简历库 + 投递与追踪 (side by side on desktop) -->
-                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8">
-                        <div>
-                            <div class="flex justify-between items-center mb-4">
-                                <h3 class="text-lg md:text-xl font-bold text-gray-800"><i class="fa-solid fa-folder-open text-indigo-500 mr-2"></i> 我的主权简历库</h3>
-                                <button onclick="openResumeModal()" class="text-indigo-600 bg-indigo-50 px-3 py-1.5 rounded-lg text-sm font-medium hover:bg-indigo-100 transition shadow-sm whitespace-nowrap">
-                                    <i class="fa-solid fa-plus mr-1"></i> 新建
-                                </button>
-                            </div>
-                            <div class="bg-gray-50 border border-gray-200 rounded-xl p-4 md:p-5">
-                                <div class="flex justify-between items-center mb-3">
-                                    <span class="text-sm text-gray-500">加密存储，授权后才可查看。</span>
-                                    <span class="text-xs bg-gray-200 text-gray-600 px-2 py-1 rounded-full font-bold" id="c2ResumeCount">1/20</span>
+                    <!-- 隐私控制栏 -->
+                    <div class="bg-gradient-to-r from-purple-100 to-pink-100 border border-purple-200 rounded-lg p-4 mb-6">
+                        <div class="flex justify-between items-center">
+                            <div class="flex items-center">
+                                <i class="fa-solid fa-shield-halved text-purple-600 text-xl mr-3"></i>
+                                <div>
+                                    <h4 class="font-bold text-purple-800">隐私授权控制阀</h4>
+                                    <p class="text-xs text-purple-600">默认匿名隐身，单次授权后解锁</p>
                                 </div>
-                                <div id="c2ResumesList" class="space-y-3"></div>
+                            </div>
+                            <div class="flex items-center space-x-2">
+                                <span class="text-xs text-gray-500">当前状态</span>
+                                <span class="bg-green-100 text-green-700 px-2 py-1 rounded text-xs font-bold" id="c2PrivacyStatus">🔒 完全匿名</span>
                             </div>
                         </div>
-
+                    </div>
+                    
+                    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                        <!-- 左侧：收到的内推 -->
+                        <div class="lg:col-span-2">
+                            <h3 class="font-bold text-gray-800 mb-4"><i class="fa-solid fa-envelope-open-text text-orange-500 mr-2"></i>收到的内推邀请 <span class="text-xs bg-orange-100 text-orange-700 px-2 py-0.5 rounded-full" id="c2PendingCount">0</span></h3>
+                            <div id="c2PendingList" class="space-y-3 mb-6"></div>
+                            
+                            <!-- 动态人才资产档案 -->
+                            <div class="bg-indigo-50 border border-indigo-200 rounded-lg p-4">
+                                <h4 class="font-bold text-indigo-800 mb-3"><i class="fa-solid fa-folder-open mr-1"></i>动态人才资产档案</h4>
+                                <div class="grid grid-cols-3 gap-3 mb-4">
+                                    <div class="bg-white rounded p-3 text-center">
+                                        <p class="text-2xl font-black text-indigo-600">92</p>
+                                        <p class="text-xs text-gray-500">个人综合评分</p>
+                                    </div>
+                                    <div class="bg-white rounded p-3 text-center">
+                                        <p class="text-2xl font-black text-green-600">3</p>
+                                        <p class="text-xs text-gray-500">C1背书数</p>
+                                    </div>
+                                    <div class="bg-white rounded p-3 text-center">
+                                        <p class="text-2xl font-black text-blue-600">2</p>
+                                        <p class="text-xs text-gray-500">B端反馈数</p>
+                                    </div>
+                                </div>
+                                <div class="bg-white rounded p-3">
+                                    <h5 class="text-sm font-bold text-gray-700 mb-2">历史背书评价</h5>
+                                    <div class="space-y-2">
+                                        <div class="flex justify-between items-center text-sm">
+                                            <span class="text-gray-600">技术能力</span>
+                                            <div class="flex items-center">
+                                                <span class="text-yellow-400">★★★★★</span>
+                                                <span class="text-gray-500 ml-1">5.0</span>
+                                            </div>
+                                        </div>
+                                        <div class="flex justify-between items-center text-sm">
+                                            <span class="text-gray-600">沟通协作</span>
+                                            <div class="flex items-center">
+                                                <span class="text-yellow-400">★★★★☆</span>
+                                                <span class="text-gray-500 ml-1">4.8</span>
+                                            </div>
+                                        </div>
+                                        <div class="flex justify-between items-center text-sm">
+                                            <span class="text-gray-600">项目经验</span>
+                                            <div class="flex items-center">
+                                                <span class="text-yellow-400">★★★★★</span>
+                                                <span class="text-gray-500 ml-1">4.9</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- 角色切换入口 -->
+                            <div class="mt-4 bg-green-50 border border-green-200 rounded-lg p-4">
+                                <div class="flex justify-between items-center">
+                                    <div>
+                                        <h4 class="font-bold text-green-800"><i class="fa-solid fa-arrows-rotate mr-1"></i>角色无缝切换</h4>
+                                        <p class="text-xs text-green-600 mt-1">在职期间可随时转换为C1推荐他人，账号互通</p>
+                                    </div>
+                                    <button onclick="switchToC1()" class="bg-green-600 text-white px-4 py-2 rounded-lg text-sm font-bold hover:bg-green-700">
+                                        转为C1推荐人
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- 右侧：简历库 + 历史 -->
                         <div>
                             <div class="mb-4">
-                                <h3 class="text-lg md:text-xl font-bold text-gray-800"><i class="fa-solid fa-timeline text-green-500 mr-2"></i> 投递与追踪</h3>
+                                <div class="flex justify-between items-center mb-3">
+                                    <h3 class="font-bold text-gray-800"><i class="fa-solid fa-file-lines text-indigo-500 mr-1"></i>主权简历库</h3>
+                                    <button onclick="openResumeModal()" class="text-indigo-600 bg-indigo-50 px-3 py-1 rounded text-xs font-medium">+ 新建</button>
+                                </div>
+                                <div class="bg-gray-50 border border-gray-200 rounded-lg p-3">
+                                    <div id="c2ResumesList" class="space-y-2"></div>
+                                </div>
                             </div>
-                            <div id="c2HistoryList" class="space-y-3 max-h-[400px] overflow-y-auto pr-1"></div>
+                            
+                            <h3 class="font-bold text-gray-800 mb-3"><i class="fa-solid fa-clock-rotate-left text-gray-500 mr-1"></i>投递历史</h3>
+                            <div id="c2HistoryList" class="space-y-2 max-h-[300px] overflow-y-auto"></div>
                         </div>
                     </div>
                 </div>
 
                 <!-- ====== ADMIN ROLE CONTENT ====== -->
                 <div id="content-admin-role" class="role-content hidden">
-                    <div class="flex justify-between items-center mb-6">
-                        <div>
-                            <h2 class="text-2xl font-bold text-gray-800"><i class="fa-solid fa-earth-americas text-indigo-500 mr-2"></i> 平台大盘监控与财务中心</h2>
-                            <p class="text-gray-500 text-sm mt-1">监控全网流转订单，执行预言机自动清算，查看详细的佣金与税务切分流水。</p>
+                    <div class="mb-6">
+                        <h2 class="text-xl font-bold text-gray-800"><i class="fa-solid fa-earth-americas text-indigo-500 mr-2"></i>平台信用引擎控制台</h2>
+                        <p class="text-gray-500 text-sm">网状信用算法 · 实时三角评分 · 数据飞轮</p>
+                    </div>
+                    
+                    <!-- 核心指标 -->
+                    <div class="grid grid-cols-2 md:grid-cols-5 gap-3 mb-6">
+                        <div class="bg-blue-50 p-3 rounded-lg border border-blue-100">
+                            <p class="text-xs text-blue-600 font-bold">活跃节点总数</p>
+                            <p class="text-xl font-black text-gray-900">12,408</p>
+                        </div>
+                        <div class="bg-indigo-50 p-3 rounded-lg border border-indigo-100">
+                            <p class="text-xs text-indigo-600 font-bold">待分配 TVL</p>
+                            <p class="text-xl font-black text-gray-900" id="adminTVL">15,000</p>
+                        </div>
+                        <div class="bg-green-50 p-3 rounded-lg border border-green-100">
+                            <p class="text-xs text-green-600 font-bold">累计发放佣金</p>
+                            <p class="text-xl font-black text-gray-900" id="adminPayouts">345,000</p>
+                        </div>
+                        <div class="bg-purple-50 p-3 rounded-lg border border-purple-100">
+                            <p class="text-xs text-purple-600 font-bold">平台净收益</p>
+                            <p class="text-xl font-black text-gray-900" id="adminRevenue">86,250</p>
+                        </div>
+                        <div class="bg-red-50 p-3 rounded-lg border border-red-100">
+                            <p class="text-xs text-red-600 font-bold">代扣代缴税金</p>
+                            <p class="text-xl font-black text-gray-900" id="adminTax">28,750</p>
                         </div>
                     </div>
                     
-                    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3 md:gap-4 mb-8">
-                        <div class="bg-blue-50 p-3 rounded-lg border border-blue-100 col-span-1">
-                            <p class="text-xs text-blue-600 whitespace-nowrap truncate font-bold mb-1">活跃节点总数</p>
-                            <p class="text-lg md:text-xl font-black text-gray-900 truncate">12,408</p>
-                        </div>
-                        <div class="bg-indigo-50 p-3 rounded-lg border border-indigo-100 col-span-1">
-                            <p class="text-xs text-indigo-600 whitespace-nowrap truncate font-bold mb-1">待分配 TVL</p>
-                            <p class="text-lg md:text-xl font-black text-gray-900 truncate" id="adminTVL">15,000</p>
-                        </div>
-                        <div class="bg-green-50 p-3 rounded-lg border border-green-100 col-span-1">
-                            <p class="text-xs text-green-600 whitespace-nowrap truncate font-bold mb-1">累计发放佣金税前</p>
-                            <p class="text-lg md:text-xl font-black text-gray-900 truncate" id="adminPayouts">345,000</p>
-                        </div>
-                        <div class="bg-purple-50 p-3 rounded-lg border border-purple-100 col-span-1">
-                            <p class="text-xs text-purple-600 whitespace-nowrap truncate font-bold mb-1">平台累计净收益</p>
-                            <p class="text-lg md:text-xl font-black text-gray-900 truncate" id="adminRevenue">86,250</p>
-                        </div>
-                        <div class="bg-red-50 p-3 rounded-lg border border-red-100 col-span-1">
-                            <p class="text-xs text-red-600 whitespace-nowrap truncate font-bold mb-1">代扣代缴税金</p>
-                            <p class="text-lg md:text-xl font-black text-gray-900 truncate" id="adminTax">28,750</p>
+                    <!-- 网状信用可视化 -->
+                    <div class="bg-gradient-to-r from-purple-50 to-indigo-50 border border-purple-100 rounded-lg p-4 mb-6">
+                        <h4 class="font-bold text-purple-800 mb-3"><i class="fa-solid fa-diagram-project mr-1"></i>网状信用算法引擎</h4>
+                        <div class="grid grid-cols-3 gap-4 text-center">
+                            <div class="bg-white rounded-lg p-3">
+                                <p class="text-xs text-gray-500">C1平均靠谱度</p>
+                                <p class="text-2xl font-black text-emerald-600">87.5</p>
+                                <p class="text-xs text-gray-400">↑ 2.3 本月</p>
+                            </div>
+                            <div class="bg-white rounded-lg p-3">
+                                <p class="text-xs text-gray-500">C2平均评分</p>
+                                <p class="text-2xl font-black text-indigo-600">91.2</p>
+                                <p class="text-xs text-gray-400">↑ 1.8 本月</p>
+                            </div>
+                            <div class="bg-white rounded-lg p-3">
+                                <p class="text-xs text-gray-500">B端满意度</p>
+                                <p class="text-2xl font-black text-blue-600">94.6</p>
+                                <p class="text-xs text-gray-400">↑ 0.5 本月</p>
+                            </div>
                         </div>
                     </div>
-
-                    <!-- Two columns for Orders: In Progress vs Settled -->
-                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 border-t border-gray-200 pt-6">
-                        
-                        <!-- Left: In Progress -->
-                        <div>
-                            <h3 class="text-lg font-bold text-gray-800 mb-4"><i class="fa-solid fa-spinner text-blue-500 mr-2"></i> 流程中推荐订单</h3>
-                            <div id="adminInProgressList" class="space-y-4">
-                                <!-- Rendered by JS -->
+                    
+                    <!-- 高净值人才数据库 -->
+                    <div class="border-t border-gray-200 pt-6">
+                        <h4 class="font-bold text-gray-800 mb-4"><i class="fa-solid fa-database mr-1 text-purple-500"></i>高净值人才全景数据库</h4>
+                        <div class="bg-gray-50 border border-gray-200 rounded-lg p-4">
+                            <div class="flex justify-between items-center mb-3">
+                                <input type="text" placeholder="搜索人才关键词..." class="border border-gray-300 rounded px-3 py-2 text-sm w-64">
+                                <div class="flex space-x-2">
+                                    <select class="border border-gray-300 rounded px-2 py-1 text-xs">
+                                        <option>全部行业</option>
+                                        <option>互联网</option>
+                                        <option>金融</option>
+                                        <option>区块链</option>
+                                    </select>
+                                    <select class="border border-gray-300 rounded px-2 py-1 text-xs">
+                                        <option>评分 >= 80</option>
+                                        <option>评分 >= 90</option>
+                                        <option>评分 >= 95</option>
+                                    </select>
+                                </div>
                             </div>
+                            <div id="talentDatabaseList" class="space-y-2 max-h-[300px] overflow-y-auto"></div>
                         </div>
-
-                        <!-- Right: Settled & Financial Breakdown -->
+                    </div>
+                    
+                    <!-- 订单管理 -->
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 border-t border-gray-200 pt-6 mt-6">
                         <div>
-                            <h3 class="text-lg font-bold text-gray-800 mb-4"><i class="fa-solid fa-check-double text-green-500 mr-2"></i> 已清算订单与财务明细</h3>
-                            <div id="adminSettledList" class="space-y-4 max-h-[600px] overflow-y-auto pr-2">
-                                <!-- Rendered by JS -->
-                            </div>
+                            <h4 class="font-bold text-gray-800 mb-3"><i class="fa-solid fa-spinner text-blue-500 mr-2"></i>流程中订单</h4>
+                            <div id="adminInProgressList" class="space-y-3"></div>
                         </div>
-
+                        <div>
+                            <h4 class="font-bold text-gray-800 mb-3"><i class="fa-solid fa-check-double text-green-500 mr-2"></i>已清算订单</h4>
+                            <div id="adminSettledList" class="space-y-3 max-h-[400px] overflow-y-auto"></div>
+                        </div>
                     </div>
                 </div>
 
@@ -356,47 +510,58 @@
         </div>
     </div>
 
-    <!-- Job Form Modal -->
-    <div id="jobModal" class="fixed inset-0 bg-gray-900 bg-opacity-50 modal-bg hidden z-[100] fade-in" style="display: none;">
-        <div class="flex items-center justify-center min-h-screen">
-        <div class="bg-white rounded-xl shadow-2xl w-[95%] md:w-full max-w-md overflow-hidden">
+    <!-- Job Modal -->
+    <div id="jobModal" class="fixed inset-0 bg-gray-900 bg-opacity-50 modal-bg hidden z-[100]" style="display: none;">
+        <div class="flex items-center justify-center min-h-screen p-4">
+        <div class="bg-white rounded-xl shadow-2xl w-full max-w-md">
             <div class="bg-indigo-600 px-6 py-4 flex justify-between items-center">
-                <h3 class="text-lg font-bold text-white" id="modalTitle">发布新悬赏职位</h3>
-                <button type="button" onclick="closeJobModal()" class="text-white hover:text-indigo-200"><i class="fa-solid fa-xmark text-xl"></i></button>
+                <h3 class="text-lg font-bold text-white">发布新悬赏职位</h3>
+                <button onclick="closeJobModal()" class="text-white hover:text-indigo-200"><i class="fa-solid fa-xmark text-xl"></i></button>
             </div>
             <div class="p-6">
                 <form id="jobForm" onsubmit="saveJob(event)">
-                    <input type="hidden" id="jobId">
                     <div class="mb-4">
-                        <label class="block text-sm font-medium text-gray-700 mb-1">职位名称 <span class="text-red-500">*</span></label>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">职位名称</label>
                         <input type="text" id="jobTitle" required class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-indigo-500 outline-none">
                     </div>
                     <div class="mb-4">
-                        <label class="block text-sm font-medium text-gray-700 mb-1">月薪预算 (元) <span class="text-red-500">*</span></label>
-                        <input type="number" id="jobSalary" required class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-indigo-500 outline-none" oninput="calculateBountyPreview()">
+                        <label class="block text-sm font-medium text-gray-700 mb-1">月薪预算 (元)</label>
+                        <input type="number" id="jobSalary" required class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-indigo-500 outline-none" oninput="setHalfBounty()">
                     </div>
                     <div class="mb-4">
-                        <label class="block text-sm font-medium text-gray-700 mb-1">职位描述 <span class="text-gray-400">(简短要求与亮点)</span></label>
-                        <textarea id="jobDesc" rows="2" class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-indigo-500 outline-none text-sm" placeholder="弹性打卡，年终丰厚..."></textarea>
-                    </div>
-                    <div class="mb-4">
-                        <label class="block text-sm font-medium text-gray-700 mb-1 flex justify-between">
-                            <span>自定义悬赏金 (元) <span class="text-red-500">*</span></span>
-                            <span class="text-xs text-indigo-600 whitespace-nowrap truncate bg-indigo-50 px-2 py-0.5 rounded cursor-pointer hover:bg-indigo-100 font-bold border border-indigo-200" onclick="setHalfBounty()">推荐:50%月薪</span>
-                        </label>
-                        <input type="number" id="jobBounty" required oninput="updateBountyPreviewText()" class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-indigo-500 outline-none font-bold text-indigo-600">
-                        <div class="mt-2 text-sm text-gray-600 flex justify-between"><span>预计需锁定资金:</span><span id="bountyPreview" class="font-bold text-indigo-600">0 元</span></div>
-                    </div>
-                    <div class="mb-6">
-                        <label class="block text-sm font-medium text-gray-700 mb-1">悬赏奖励策略 <span class="text-red-500">*</span></label>
-                        <select id="jobRewardType" class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-indigo-500 outline-none text-sm bg-white">
-                            <option value="入职全额发放">入职全额发放</option>
-                            <option value="推荐面试+入职奖">推荐面试有奖 + 入职大奖</option>
-                            <option value="过试用期发放">过试用期发放</option>
-                        </select>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">悬赏定金 (元)</label>
+                        <input type="number" id="jobBounty" required class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-indigo-500 outline-none font-bold text-indigo-600">
                     </div>
                     <div class="flex justify-end space-x-3">
-                        <button type="button" onclick="closeJobModal()" class="px-4 py-2 text-gray-600 bg-gray-100 hover:bg-gray-200 rounded-lg">取消</button>
+                        <button type="button" onclick="closeJobModal()" class="px-4 py-2 text-gray-600 bg-gray-100 rounded-lg">取消</button>
+                        <button type="submit" class="px-6 py-2 bg-indigo-600 text-white rounded-lg font-medium hover:bg-indigo-700">发布</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        </div>
+    </div>
+
+    <!-- Resume Modal -->
+    <div id="resumeModal" class="fixed inset-0 bg-gray-900 bg-opacity-50 modal-bg hidden z-[100]" style="display: none;">
+        <div class="flex items-center justify-center min-h-screen p-4">
+        <div class="bg-white rounded-xl shadow-2xl w-full max-w-md">
+            <div class="bg-indigo-600 px-6 py-4 flex justify-between items-center">
+                <h3 class="text-lg font-bold text-white">新建简历</h3>
+                <button onclick="closeResumeModal()" class="text-white hover:text-indigo-200"><i class="fa-solid fa-xmark text-xl"></i></button>
+            </div>
+            <div class="p-6">
+                <form id="resumeForm" onsubmit="saveResume(event)">
+                    <div class="mb-4">
+                        <label class="block text-sm font-medium text-gray-700 mb-1">简历名称</label>
+                        <input type="text" id="resumeTitleInput" required class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-indigo-500 outline-none">
+                    </div>
+                    <div class="mb-6">
+                        <label class="block text-sm font-medium text-gray-700 mb-1">核心履历</label>
+                        <textarea id="resumeContent" rows="3" class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-indigo-500 outline-none"></textarea>
+                    </div>
+                    <div class="flex justify-end space-x-3">
+                        <button type="button" onclick="closeResumeModal()" class="px-4 py-2 text-gray-600 bg-gray-100 rounded-lg">取消</button>
                         <button type="submit" class="px-6 py-2 bg-indigo-600 text-white rounded-lg font-medium hover:bg-indigo-700">保存</button>
                     </div>
                 </form>
@@ -405,28 +570,32 @@
         </div>
     </div>
 
-    <!-- Resume Form Modal -->
-    <div id="resumeModal" class="fixed inset-0 bg-gray-900 bg-opacity-50 modal-bg hidden z-[100] fade-in" style="display: none;">
-        <div class="flex items-center justify-center min-h-screen">
-        <div class="bg-white rounded-xl shadow-2xl w-[95%] md:w-full max-w-lg overflow-hidden">
-            <div class="bg-indigo-600 px-6 py-4 flex justify-between items-center">
-                <h3 class="text-lg font-bold text-white" id="resumeModalTitle">新建简历</h3>
-                <button type="button" onclick="closeResumeModal()" class="text-white hover:text-indigo-200"><i class="fa-solid fa-xmark text-xl"></i></button>
+    <!-- B Feedback Modal -->
+    <div id="feedbackModal" class="fixed inset-0 bg-gray-900 bg-opacity-50 modal-bg hidden z-[100]" style="display: none;">
+        <div class="flex items-center justify-center min-h-screen p-4">
+        <div class="bg-white rounded-xl shadow-2xl w-full max-w-md">
+            <div class="bg-blue-600 px-6 py-4 flex justify-between items-center">
+                <h3 class="text-lg font-bold text-white">结构化面试反馈</h3>
+                <button onclick="closeFeedbackModal()" class="text-white hover:text-blue-200"><i class="fa-solid fa-xmark text-xl"></i></button>
             </div>
             <div class="p-6">
-                <form id="resumeForm" onsubmit="saveResume(event)">
-                    <input type="hidden" id="resumeId">
+                <form id="feedbackForm" onsubmit="saveFeedback(event)">
+                    <input type="hidden" id="feedbackAppId">
                     <div class="mb-4">
-                        <label class="block text-sm font-medium text-gray-700 mb-1">简历名称 / 版本 <span class="text-red-500">*</span></label>
-                        <input type="text" id="resumeTitleInput" required class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-indigo-500 outline-none" placeholder="例如：2026资深产品经理简历">
+                        <label class="block text-sm font-medium text-gray-700 mb-2">技术能力评分 (1-5星)</label>
+                        <div class="flex gap-2" id="feedbackTechStars"></div>
                     </div>
-                    <div class="mb-6">
-                        <label class="block text-sm font-medium text-gray-700 mb-1">核心履历摘要</label>
-                        <textarea id="resumeContent" rows="4" class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-indigo-500 outline-none"></textarea>
+                    <div class="mb-4">
+                        <label class="block text-sm font-medium text-gray-700 mb-2">沟通协作评分 (1-5星)</label>
+                        <div class="flex gap-2" id="feedbackCommStars"></div>
+                    </div>
+                    <div class="mb-4">
+                        <label class="block text-sm font-medium text-gray-700 mb-2">综合评价</label>
+                        <textarea id="feedbackContent" rows="3" class="w-full border border-gray-300 rounded-lg p-2 text-sm" placeholder="填写面试反馈，将更新候选人档案..."></textarea>
                     </div>
                     <div class="flex justify-end space-x-3">
-                        <button type="button" onclick="closeResumeModal()" class="px-4 py-2 text-gray-600 bg-gray-100 hover:bg-gray-200 rounded-lg">取消</button>
-                        <button type="submit" class="px-6 py-2 bg-indigo-600 text-white rounded-lg font-medium hover:bg-indigo-700">保存入库</button>
+                        <button type="button" onclick="closeFeedbackModal()" class="px-4 py-2 text-gray-600 bg-gray-100 rounded-lg">取消</button>
+                        <button type="submit" class="px-6 py-2 bg-blue-600 text-white rounded-lg font-medium hover:bg-blue-700">提交反馈</button>
                     </div>
                 </form>
             </div>
@@ -435,293 +604,208 @@
     </div>
 
     <script>
-        // --- System State & Global Data ---
-        let state = { currentRole: null, walletConnected: false, activeMatchJob: null };
+        let state = { currentRole: null, walletConnected: false, activeMatchJob: null, c1Ratings: { tech: 4, comm: 4 } };
 
-        const globalData = {
-            payoutsGross: 345000,
-            revenueNet: 86250,
-            taxTotal: 28750,
-            c1TotalEarned: 9600
-        };
+        const globalData = { payoutsGross: 345000, revenueNet: 86250, taxTotal: 28750, c1TotalEarned: 9600 };
 
         const roleMeta = {
-            'b-role': { name: '企业用人端', badge: 'bg-blue-100 text-blue-800 border-blue-200', title: '企业降本增效，<span class="gradient-text">用悬赏代替中介费</span>', sub: '仅需支付岗位 50% 月薪作为定金，彻底告别高昂的传统猎头费。' },
-            'c1-role': { name: 'C1推荐人', badge: 'bg-green-100 text-green-800 border-green-200', title: '激活沉睡人脉，<span class="gradient-text">一键推荐赚取高额佣金</span>', sub: 'AI扫描精准匹配，撰写背书推荐信，追踪全网状态，赚取高额悬赏。' },
-            'c2-role': { name: 'C2候选人', badge: 'bg-orange-100 text-orange-800 border-orange-200', title: '掌控简历主权，<span class="gradient-text">被动求职先授权后解密</span>', sub: '管理多份数字简历，收到真实内推邀请后签名解密投递。' },
-            'admin-role': { name: '平台管理员 (Admin)', badge: 'bg-purple-100 text-purple-800 border-purple-200', title: '代码即法律，<span class="gradient-text">信任降维与自动化清算</span>', sub: '全网订单流转大盘，查看详细的佣金切割与代扣代缴税务明细。' }
+            'b-role': { name: '企业用人端', title: '精准对接 · <span class="gradient-text">极速结算</span>', sub: '海量优选顾问 · 信用加权看板' },
+            'c1-role': { name: 'C1推荐人', title: '网状信用资产 · <span class="gradient-text">变现工作台</span>', sub: 'Trust Score · 确权上链 · 防飞单' },
+            'c2-role': { name: 'C2候选人', title: '隐私绝对安全 · <span class="gradient-text">动态资产增值</span>', sub: '单次授权 · 角色切换 · 数字档案' },
+            'admin-role': { name: '平台管理员', title: '网状信用引擎 · <span class="gradient-text">数据飞轮</span>', sub: '实时三角评分 · 人才数据库' }
         };
 
-        // Seed Data
         let jobs = [
-            { id: 1, title: '高级 AI 算法工程师 (LLM 训练)', salary: 30000, bounty: 15000, status: 'locked' },
-            { id: 2, title: 'Web3 智能合约安全审计专家', salary: 45000, bounty: 22500, status: 'locked' },
-            { id: 3, title: '海外市场增长总监 (亚太区)', salary: 20000, bounty: 10000, status: 'pending' },
-            { id: 99, title: 'Web3 资深产品经理', salary: 24000, bounty: 12000, status: 'settled' }
+            { id: 1, title: '高级 AI 算法工程师', salary: 30000, bounty: 15000, status: 'locked' },
+            { id: 2, title: 'Web3 智能合约专家', salary: 45000, bounty: 22500, status: 'locked' },
+            { id: 3, title: '海外市场增长总监', salary: 20000, bounty: 10000, status: 'pending' }
         ];
 
         let resumes = [
-            { id: 1, title: '通用技术研发简历 (五年后端)', content: '精通 Java/Rust...', updatedAt: '2026-03-10' },
-            { id: 2, title: 'Web3 智能合约专项简历', content: '熟悉 Solidity...', updatedAt: '2026-03-15' }
+            { id: 1, title: '通用技术研发简历' },
+            { id: 2, title: 'Web3 专项简历' }
         ];
 
-        // status: auth_pending, received, unlocked, hired, settled
         let applications = [
-            { id: 99, jobId: 99, jobTitle: 'Web3 资深产品经理', c1Reason: '极其优秀的产品sense，带过百万DAU项目。', status: 'settled', resumeId: 1, bounty: 12000 }
+            { id: 99, jobId: 99, jobTitle: 'Web3 资深产品经理', c1Reason: '极其优秀', status: 'settled', c1Id: 1, c1TrustScore: 92, bounty: 12000 }
         ];
 
-        // --- Core Navigation ---
+        let c1Nodes = [
+            { id: 1, name: '林大牛', trustScore: 92, successRate: 85, specialties: ['区块链', 'AI'], totalEarned: 9600 },
+            { id: 2, name: '张专家', trustScore: 88, successRate: 78, specialties: ['金融', '产品'], totalEarned: 7200 },
+            { id: 3, name: '王架构', trustScore: 95, successRate: 92, specialties: ['后端', '架构'], totalEarned: 15000 }
+        ];
+
+        let talentDatabase = [
+            { id: 1, name: '林大牛', score: 92, tags: ['区块链', 'AI', 'LLM'], c1Count: 3, bFeedbackCount: 5 },
+            { id: 2, name: '李架构', score: 88, tags: ['后端', '分布式'], c1Count: 2, bFeedbackCount: 3 },
+            { id: 3, name: '赵产品', score: 95, tags: ['Web3', '产品', '增长'], c1Count: 5, bFeedbackCount: 8 }
+        ];
+
         function navTo(viewId) {
             document.querySelectorAll('.view-section').forEach(el => el.style.display = 'none');
             document.getElementById(viewId).style.display = viewId === 'view-landing' ? 'flex' : 'block';
-            window.scrollTo(0,0);
+            window.scrollTo(0, 0);
         }
 
         function loginAs(roleId) {
             state.currentRole = roleId;
             const meta = roleMeta[roleId];
-            
-            const badge = document.getElementById('currentRoleBadge');
-            badge.innerHTML = `<i class="fa-solid fa-user-check mr-1"></i> ${meta.name}`;
-            badge.className = `hidden md:inline px-3 py-1 rounded-md text-xs md:text-sm font-bold border shadow-sm md:ml-4 ${meta.badge}`;
+            document.getElementById('currentRoleBadge').innerHTML = meta.name;
             document.getElementById('mainTitle').innerHTML = meta.title;
             document.getElementById('mainSubtitle').innerHTML = meta.sub;
-
             document.querySelectorAll('.role-content').forEach(el => el.classList.add('hidden'));
             document.getElementById(`content-${roleId}`).classList.remove('hidden');
-
-            if(roleId === 'b-role') { renderJobs(); renderBApps(); }
+            if(roleId === 'b-role') { renderJobs(); renderBApps(); renderC1Market(); }
             if(roleId === 'c1-role') { renderC1View(); renderC1Jobs(); }
             if(roleId === 'c2-role') { renderC2View(); }
-            if(roleId === 'admin-role') { updateAdminDashboard(); }
-
+            if(roleId === 'admin-role') { updateAdminDashboard(); renderTalentDatabase(); }
             navTo('view-app');
         }
 
         function connectWallet() {
             state.walletConnected = true;
             const btn = document.getElementById('walletBtn');
-            btn.innerHTML = '<i class="fa-solid fa-check-circle mr-1"></i> 0x4A...2C';
+            btn.innerHTML = '<i class="fa-solid fa-check-circle mr-1"></i> 已连接';
             btn.classList.replace('bg-indigo-600', 'bg-green-600');
-            btn.classList.replace('hover:bg-indigo-700', 'hover:bg-green-700');
-            if(state.currentRole === 'b-role') { renderJobs(); renderBApps(); }
         }
 
-        function updateTVL() {
-            const tvl = jobs.filter(j => j.status === 'locked').reduce((sum, job) => sum + job.bounty, 0);
-            const tvlAdmin = document.getElementById('adminTVL');
-            if(tvlAdmin) tvlAdmin.innerText = tvl.toLocaleString() + ' 元';
-            return tvl;
+        // B Role Tabs
+        function switchBTab(tab) {
+            ['inbox', 'market', 'jobs'].forEach(t => {
+                document.getElementById(`bTab-${t}`).className = t === tab ? 'px-4 py-2 text-sm font-bold border-b-2 border-indigo-600 text-indigo-600' : 'px-4 py-2 text-sm font-bold border-b-2 border-transparent text-gray-500';
+                document.getElementById(`bPanel-${t}`).classList.toggle('hidden', t !== tab);
+            });
         }
 
-        // --- B ROLE (Enterprise) ---
-        function renderJobs() {
-            updateTVL();
-            const container = document.getElementById('jobListContainer');
-            container.innerHTML = '';
-            const displayJobs = jobs.filter(j => j.status !== 'settled');
-
-            if (displayJobs.length === 0) {
-                container.innerHTML = `<div class="text-center py-8 bg-gray-50 rounded-lg text-gray-500 border border-dashed border-gray-300">暂无职位，点击发布开始寻猎。</div>`;
-                return;
-            }
-            displayJobs.forEach(job => {
-                const isLocked = job.status === 'locked';
-                const statusBadge = isLocked 
-                    ? `<span class="bg-green-100 text-green-700 text-xs px-2 py-1 rounded font-medium border border-green-200"><i class="fa-solid fa-lock mr-1"></i>已锁资全网分发</span>`
-                    : `<span class="bg-yellow-100 text-yellow-700 text-xs px-2 py-1 rounded font-medium border border-yellow-200"><i class="fa-regular fa-clock mr-1"></i>待支付定金</span>`;
-                const actionButtons = isLocked
-                    ? `<span class="text-gray-400 text-sm px-3 py-1 bg-gray-50 rounded border border-gray-200"><i class="fa-solid fa-satellite-dish mr-1"></i>全网寻猎中</span>`
-                    : `<button onclick="lockJobFunds(${job.id})" class="${state.walletConnected ? 'bg-indigo-600 hover:bg-indigo-700 text-white' : 'bg-gray-300 text-gray-500 cursor-not-allowed'} px-3 py-1.5 rounded text-sm font-medium transition shadow-sm"><i class="fa-brands fa-ethereum mr-1"></i>锁资发布</button>`;
-
-                container.innerHTML += `
-                    <div class="bg-white border ${isLocked ? 'border-indigo-200 shadow-sm' : 'border-gray-200'} rounded-lg p-5">
-                        <div class="flex flex-col md:flex-row justify-between items-start">
-                            <div class="flex-1 w-full">
-                                <h3 class="text-lg font-bold text-gray-900 flex flex-wrap items-center gap-y-2">${job.title} <span class="ml-3">${statusBadge}</span></h3>
-                                <div class="mt-2 text-sm text-gray-600">月薪预算: ${job.salary.toLocaleString()} 元 &nbsp;|&nbsp; 悬赏定金: <span class="font-bold text-indigo-600">${job.bounty.toLocaleString()} 元</span></div>
-                                ${job.desc ? `<div class="mt-2 text-sm text-gray-500 bg-gray-50 p-2 rounded-lg border border-gray-100">${job.desc}</div>` : ''}
-                                ${job.rewardType ? `<div class="mt-2 text-xs text-blue-600 whitespace-nowrap truncate bg-blue-50 inline-block px-2 py-1 rounded border border-blue-100">${job.rewardType}</div>` : ''}
-                            </div>
-                            <div class="flex flex-row md:flex-col items-center md:items-end gap-2 shrink-0 md:ml-4 mt-4 md:mt-0 w-full md:w-auto justify-end">
-                                ${actionButtons}
-                                ${isLocked ? `<button onclick="alert('海报已生成，正调用微信SDK分享到朋友圈...\\n[ 悬赏：${job.bounty.toLocaleString()} 元，快来接单！]')" class="text-green-600 hover:text-green-800 bg-green-50 px-3 py-1.5 rounded text-xs font-bold transition shadow-sm border border-green-200"><i class="fa-brands fa-weixin mr-1"></i>分享朋友圈</button>` : ''}
+        function renderC1Market() {
+            const container = document.getElementById('c1MarketList');
+            container.innerHTML = c1Nodes.map(c1 => `
+                <div class="bg-white border border-gray-200 rounded-lg p-4 hover:border-green-300 cursor-pointer transition" onclick="alert('已复制 ${c1.name} 的联系方式')">
+                    <div class="flex justify-between items-start mb-2">
+                        <div class="flex items-center">
+                            <div class="w-10 h-10 bg-gradient-to-br from-emerald-400 to-teal-500 rounded-full flex items-center justify-center text-white font-bold mr-2">${c1.name[0]}</div>
+                            <div>
+                                <h4 class="font-bold text-gray-900">${c1.name}</h4>
+                                <p class="text-xs text-gray-500">成功率 ${c1.successRate}%</p>
                             </div>
                         </div>
-                    </div>`;
-            });
+                        <span class="bg-green-100 text-green-700 px-2 py-0.5 rounded text-xs font-bold">⭐ ${c1.trustScore}</span>
+                    </div>
+                    <div class="flex flex-wrap gap-1 mb-2">
+                        ${c1.specialties.map(s => `<span class="bg-gray-100 text-gray-600 px-2 py-0.5 rounded text-xs">${s}</span>`).join('')}
+                    </div>
+                    <div class="text-xs text-gray-500">累计赚取: <span class="font-bold text-indigo-600">${c1.totalEarned.toLocaleString()} 元</span></div>
+                </div>
+            `).join('');
+        }
+
+        // B Role Functions
+        function renderJobs() {
+            const container = document.getElementById('jobListContainer');
+            container.innerHTML = jobs.filter(j => j.status !== 'settled').map(job => `
+                <div class="bg-white border ${job.status === 'locked' ? 'border-indigo-200' : 'border-gray-200'} rounded-lg p-4">
+                    <div class="flex justify-between items-center">
+                        <div>
+                            <h4 class="font-bold text-gray-900">${job.title}</h4>
+                            <p class="text-sm text-gray-500">月薪 ${job.salary.toLocaleString()} | 悬赏 <span class="font-bold text-indigo-600">${job.bounty.toLocaleString()}</span></p>
+                        </div>
+                        <span class="${job.status === 'locked' ? 'bg-green-100 text-green-700' : 'bg-yellow-100 text-yellow-700'} px-2 py-1 rounded text-xs font-bold">
+                            ${job.status === 'locked' ? '🔒 已锁资' : '⏳ 待发布'}
+                        </span>
+                    </div>
+                </div>
+            `).join('') || '<div class="text-center py-8 text-gray-400">暂无职位</div>';
         }
 
         function renderBApps() {
-            const inboxContainer = document.getElementById('bAppListContainer');
-            const hiredContainer = document.getElementById('bHiredListContainer');
-            inboxContainer.innerHTML = ''; hiredContainer.innerHTML = '';
-            
-            let inboxCount = 0;
-            applications.forEach(app => {
-                if(app.status === 'auth_pending' || app.status === 'declined') return;
-
-                const name = (app.status === 'unlocked' || app.status === 'hired' || app.status === 'settled') ? '林大牛' : '林** <span class="text-xs text-gray-400 ml-1">(待解锁)</span>';
-                
+            const container = document.getElementById('bAppListContainer');
+            container.innerHTML = applications.filter(a => a.status !== 'auth_pending' && a.status !== 'declined').map(app => {
                 let actionHtml = '';
-                if(app.status === 'received') {
-                    actionHtml = `<button onclick="unlockContact(${app.id})" class="${state.walletConnected ? 'bg-indigo-600 hover:bg-indigo-700 text-white' : 'bg-gray-300 text-gray-500 cursor-not-allowed'} px-4 py-2 rounded-lg text-sm font-bold shadow-sm transition"><i class="fa-solid fa-unlock mr-1"></i> 50 元 解锁</button>`;
-                    inboxCount++;
-                } else if(app.status === 'unlocked') {
-                    actionHtml = `<button onclick="hireCandidate(${app.id})" class="bg-green-600 text-white px-4 py-2 rounded-lg text-sm font-bold hover:bg-green-700 shadow-sm transition"><i class="fa-solid fa-file-signature mr-1"></i> 发放 Offer</button>`;
-                    inboxCount++;
-                }
-
-                const cardHtml = `
-                    <div class="bg-white border border-gray-200 rounded-lg p-4 shadow-sm hover:shadow-md transition">
-                        <div class="flex flex-col md:flex-row justify-between md:items-center mb-3 border-b border-gray-100 pb-2 gap-2">
+                if(app.status === 'received') actionHtml = `<button onclick="unlockContact(${app.id})" class="${state.walletConnected ? 'bg-indigo-600 hover:bg-indigo-700' : 'bg-gray-300'} text-white px-3 py-1.5 rounded text-xs font-bold">解锁联系</button>`;
+                if(app.status === 'unlocked') actionHtml = `<button onclick="hireCandidate(${app.id})" class="bg-green-600 hover:bg-green-700 text-white px-3 py-1.5 rounded text-xs font-bold">发放Offer</button>`;
+                if(app.status === 'hired') actionHtml = `<button onclick="openFeedbackModal(${app.id})" class="bg-blue-600 hover:bg-blue-700 text-white px-3 py-1.5 rounded text-xs font-bold">填写反馈</button>`;
+                
+                return `
+                <div class="bg-white border border-gray-200 rounded-lg p-4">
+                    <div class="flex justify-between items-start mb-2">
+                        <div>
                             <h4 class="font-bold text-gray-900">${app.jobTitle}</h4>
-                            <span class="bg-blue-50 text-blue-700 px-2 py-0.5 rounded text-xs font-bold border border-blue-200">AI 匹配 96%</span>
+                            <p class="text-xs text-gray-500">C1靠谱度: ⭐ ${app.c1TrustScore || 92}</p>
                         </div>
-                        <div class="bg-orange-50 rounded p-3 mb-3 text-sm">
-                            <div class="font-bold text-orange-800 mb-1">C1 节点推荐信:</div>
-                            <div class="text-gray-700 italic">"${app.c1Reason}"</div>
-                        </div>
-                        <div class="flex justify-between items-center bg-gray-50 rounded p-3 border border-gray-100">
-                            <div class="font-bold text-gray-900">${name}</div>
-                            ${actionHtml}
-                        </div>
+                        <span class="bg-blue-50 text-blue-700 px-2 py-0.5 rounded text-xs font-bold">${app.c1Reason || '优秀人才'}</span>
                     </div>
-                `;
-
-                if(app.status === 'received' || app.status === 'unlocked') {
-                    inboxContainer.innerHTML += cardHtml;
-                } else if(app.status === 'hired' || app.status === 'settled') {
-                    const statusTag = app.status === 'settled' 
-                        ? `<span class="bg-purple-100 text-purple-700 px-2 py-1 rounded text-xs font-bold"><i class="fa-solid fa-check-double mr-1"></i>已结项清算</span>`
-                        : `<span class="bg-green-100 text-green-700 px-2 py-1 rounded text-xs font-bold"><i class="fa-solid fa-hourglass-half mr-1"></i>已录用待清算</span>`;
-                    
-                    hiredContainer.innerHTML += `
-                        <div class="bg-white border border-gray-200 rounded-lg p-4 shadow-sm flex flex-col sm:flex-row justify-between sm:items-center gap-3">
-                            <div>
-                                <h4 class="font-bold text-gray-900">${app.jobTitle}</h4>
-                                <div class="text-sm text-gray-500 mt-1">录用人才: <span class="font-bold text-gray-700">林大牛</span></div>
-                            </div>
-                            <div>${statusTag}</div>
-                        </div>
-                    `;
-                }
-            });
-
-            document.getElementById('bInboxCount').innerText = inboxCount;
-            if(inboxCount === 0) inboxContainer.innerHTML = `<div class="text-center py-6 text-sm text-gray-400 bg-gray-50 rounded">暂无新的待处理投递</div>`;
-            if(hiredContainer.innerHTML === '') hiredContainer.innerHTML = `<div class="text-center py-6 text-sm text-gray-400 bg-gray-50 rounded">暂无已录用记录</div>`;
+                    <div class="flex justify-end">${actionHtml}</div>
+                </div>`;
+            }).join('') || '<div class="text-center py-8 text-gray-400">暂无投递</div>';
         }
 
         function unlockContact(appId) {
-            if(!state.walletConnected) return;
-            setTimeout(() => {
-                const app = applications.find(a => a.id === appId);
-                app.status = 'unlocked';
-                alert("✅ 支付成功！已解锁联系方式与完整明文简历。");
-                renderBApps();
-            }, 500);
+            if(!state.walletConnected) return alert('请先连接钱包');
+            const app = applications.find(a => a.id === appId);
+            if(app) app.status = 'unlocked';
+            alert('✅ 已解锁联系方式');
+            renderBApps();
         }
 
         function hireCandidate(appId) {
-            setTimeout(() => {
-                const app = applications.find(a => a.id === appId);
-                app.status = 'hired';
-                alert("✅ 录用确权成功！订单已移交智能合约等待预言机清算。");
-                renderBApps();
-            }, 500);
+            const app = applications.find(a => a.id === appId);
+            if(app) app.status = 'hired';
+            alert('✅ 已发放Offer，请填写面试反馈');
+            renderBApps();
         }
 
-        function lockJobFunds(id) {
-            if(!state.walletConnected) return alert('请先在右上角连接钱包！');
-            setTimeout(() => {
-                const job = jobs.find(j => j.id === id);
-                if(job) {
-                    job.status = 'locked';
-                    renderJobs();
-                    alert("✅ 锁资发布成功！全网节点已激活。");
-                }
-            }, 500);
+        function openFeedbackModal(appId) {
+            document.getElementById('feedbackAppId').value = appId;
+            document.getElementById('feedbackModal').classList.remove('hidden');
+            document.getElementById('feedbackModal').style.display = 'block';
         }
 
-        function openJobModal() {
-            const form = document.getElementById('jobForm');
-            if(form) form.reset();
-            const preview = document.getElementById('bountyPreview');
-            if(preview) preview.innerText = '0 元';
-            document.getElementById('jobModal').classList.remove('hidden');
-            document.getElementById('jobModal').style.display = 'block';
+        function closeFeedbackModal() {
+            document.getElementById('feedbackModal').style.display = 'none';
         }
-        function closeJobModal() { document.getElementById('jobModal').style.display = 'none'; }
-        function calculateBountyPreview() {
-            setHalfBounty();
-        }
-        function setHalfBounty() {
-            const s = parseInt(document.getElementById("jobSalary").value) || 0;
-            const bountyInput = document.getElementById("jobBounty");
-            if(bountyInput) {
-                bountyInput.value = s / 2;
-            }
-            const bp = document.getElementById("bountyPreview");
-            if(bp) bp.innerText = (s/2).toLocaleString() + " 元";
-        }
-        
-        function updateBountyPreviewText() {
-            const bp = document.getElementById("bountyPreview");
-            const bi = document.getElementById("jobBounty");
-            if(bp && bi) {
-                bp.innerText = (parseInt(bi.value) || 0).toLocaleString() + " 元";
-            }
-        }
-        function setHalfBounty() {
 
-            const s = parseInt(document.getElementById("jobSalary").value) || 0;
-            if(document.getElementById("jobBounty")) document.getElementById("jobBounty").value = s / 2;
-        }
-        function saveJob(e) {
+        function saveFeedback(e) {
             e.preventDefault();
-            const title = document.getElementById('jobTitle').value;
-            const salary = parseFloat(document.getElementById('jobSalary').value);
-            const desc = document.getElementById("jobDesc") ? document.getElementById("jobDesc").value : "";
-            const bountyInput = document.getElementById("jobBounty");
-            const bounty = bountyInput ? parseInt(bountyInput.value) : salary * 0.5;
-            const rewardTypeInput = document.getElementById("jobRewardType");
-            const rewardType = rewardTypeInput ? rewardTypeInput.value : "入职全额发放";
-            const newJob = { id: Date.now(), title, desc, salary, bounty, rewardType, status: "pending" };
-            jobs.unshift(newJob); closeJobModal(); renderJobs(); setTimeout(() => { if(confirm("✅ 职位发布成功！是否生成海报分享至微信朋友圈？\n[ 悬赏: " + bounty + " 元，快来接单！ ]")) alert("正在调用微信SDK分享...分享成功！"); }, 500);
-            closeJobModal(); renderJobs();
+            const appId = parseInt(document.getElementById('feedbackAppId').value);
+            const app = applications.find(a => a.id === appId);
+            if(app) {
+                app.bFeedback = document.getElementById('feedbackContent').value;
+                app.status = 'settled';
+                alert('✅ 反馈已上链，将更新候选人档案与C1靠谱度');
+            }
+            closeFeedbackModal();
+            renderBApps();
         }
 
-        // --- C1 ROLE (Nodes) ---
+        // C1 Role Functions
         function renderC1View() {
             renderC1Referrals();
         }
 
-
         function renderC1Jobs() {
-            const c1List = document.getElementById('c1JobList');
-            if (!c1List) return;
-            c1List.innerHTML = '';
-            
-            const displayJobs = jobs.filter(j => j.status === 'locked' || j.status === 'pending').sort((a,b) => b.bounty - a.bounty);
-            
-            if (displayJobs.length === 0) {
-                c1List.innerHTML = `<div class="text-center py-8 bg-gray-50 rounded-lg text-gray-400 text-sm">暂无悬赏职位</div>`;
-                return;
-            }
-            
-            displayJobs.forEach(job => {
-                c1List.innerHTML += `
-                    <div class="bg-white border border-gray-200 rounded-xl p-4 hover:border-indigo-300 shadow-sm flex justify-between items-center">
-                        <div>
-                            <h3 class="font-bold text-gray-900">${job.title}</h3>
-                            <div class="text-sm text-gray-500 mt-1">悬赏: <span class="font-bold text-indigo-600">${job.bounty.toLocaleString()} 元</span> (赚80%)</div>
-                        </div>
-                        <button onclick="runAILocalScan(${job.id})" class="bg-gray-900 text-white px-3 py-1.5 rounded-lg text-sm font-medium hover:bg-gray-800"><i class="fa-solid fa-brain mr-1"></i> 匹配</button>
-                    </div>`;
-            });
+            const container = document.getElementById('c1JobList');
+            container.innerHTML = jobs.filter(j => j.status === 'locked' || j.status === 'pending').map(job => `
+                <div class="bg-white border border-gray-200 rounded-lg p-4 flex justify-between items-center hover:border-indigo-300">
+                    <div>
+                        <h4 class="font-bold text-gray-900">${job.title}</h4>
+                        <p class="text-sm text-indigo-600 font-bold">悬赏 ${job.bounty.toLocaleString()} 元 (赚80%)</p>
+                    </div>
+                    <button onclick="runAILocalScan(${job.id})" class="bg-gray-900 text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-gray-800">
+                        <i class="fa-solid fa-brain mr-1"></i> AI匹配
+                    </button>
+                </div>
+            `).join('') || '<div class="text-center py-8 text-gray-400">暂无悬赏职位</div>';
         }
 
+        function setRating(type, stars) {
+            state.c1Ratings[type] = stars;
+            const container = document.getElementById(type === 'tech' ? 'c1TechRating' : 'c1CommRating');
+            container.querySelectorAll('button').forEach((btn, i) => {
+                btn.classList.toggle('text-yellow-400', i < stars);
+                btn.classList.toggle('text-gray-300', i >= stars);
+            });
+        }
 
         function runAILocalScan(jobId) {
             const job = jobs.find(j => j.id === jobId);
@@ -729,6 +813,7 @@
             document.getElementById('c1SelectedJobTitle').innerText = job.title;
             document.getElementById('c1ExpectedPayout').innerText = `预估净赚: ${(job.bounty * 0.8 * 0.93).toLocaleString()} 元`;
             document.getElementById('c1Reason').value = '';
+            document.getElementById('c1Pitch').value = '这岗位挺契合你，薪资也不错！';
             document.getElementById('ai-result').classList.remove('hidden');
             document.getElementById('share-card').classList.add('hidden');
             document.getElementById('ai-result').scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -736,290 +821,233 @@
 
         function generateLink() {
             const reason = document.getElementById('c1Reason').value.trim();
-            if(!reason) { alert("请填写推荐理由！"); return; }
-            
+            if(!reason) { alert('请填写推荐理由'); return; }
             const job = state.activeMatchJob;
-            const c1Rel = document.getElementById('c1Relation') ? document.getElementById('c1Relation').value : '推荐人';
-            const c1Pitch = document.getElementById('c1Pitch') ? document.getElementById('c1Pitch').value : '';
-            const newApp = { id: Date.now(), jobId: job.id, jobTitle: job.title, c1Reason: reason, c1Relation: c1Rel, c1Pitch: c1Pitch, status: 'auth_pending', bounty: job.bounty };
+            const newApp = { 
+                id: Date.now(), jobId: job.id, jobTitle: job.title, 
+                c1Reason: reason, c1Relation: document.getElementById('c1Relation').value,
+                c1WorkDuration: document.getElementById('c1WorkDuration').value,
+                c1Pitch: document.getElementById('c1Pitch').value,
+                c1Ratings: state.c1Ratings,
+                c1TrustScore: 92,
+                status: 'auth_pending', bounty: job.bounty 
+            };
             applications.push(newApp);
-
-            document.getElementById('shareText').innerHTML = `专属通道: renren.hunt/invite/${newApp.id.toString().substring(0,5)}`;
+            document.getElementById('shareText').innerHTML = `✅ 推荐已确权上链 | 链ID: 0x${Date.now().toString(16)} | 防飞单`;
             document.getElementById('share-card').classList.remove('hidden');
             renderC1Referrals();
-            alert("✅ 内推单已生成！");
-        }
-
-        function deleteC1App(appId) {
-            if(confirm("确定要撤回该内推推荐吗？撤回后候选人将无法再查看或授权。")) {
-                const idx = applications.findIndex(a => a.id === appId);
-                if(idx > -1) {
-                    applications.splice(idx, 1);
-                    renderC1Referrals();
-                    alert("已成功撤回内推。");
-                }
-            }
-        }
-        function editC1App(appId) {
-            const app = applications.find(a => a.id === appId);
-            if(app) {
-                const newReason = prompt("修改您的核心推荐背书（仅HR可见）：", app.c1Reason);
-                if(newReason !== null) {
-                    app.c1Reason = newReason;
-                    renderC1Referrals();
-                    alert("内推背书已更新！");
-                }
-            }
+            alert('✅ 推荐确权成功！全链路节点已上链，防飞单');
         }
 
         function renderC1Referrals() {
-            document.getElementById('c1TotalEarned').innerText = globalData.c1TotalEarned.toLocaleString();
-            
             const container = document.getElementById('c1ReferralList');
-            container.innerHTML = '';
-            
-            let pendingEarned = 0;
-            const reversedApps = [...applications].reverse();
-
-            if (reversedApps.length === 0) {
-                container.innerHTML = `<div class="text-center py-6 text-sm text-gray-400 bg-gray-50 rounded">暂无推荐记录</div>`;
-                return;
-            }
-
-            reversedApps.forEach(app => {
-                let statusLabel, statusColor;
-                if(app.status === 'auth_pending') { statusLabel = '等待候选人确认'; statusColor = 'bg-gray-100 text-gray-600'; }
-                else if(app.status === 'declined') { statusLabel = '候选人已婉拒'; statusColor = 'bg-red-50 text-red-600 border-red-100'; }
-                else if(app.status === 'received' || app.status === 'unlocked') { statusLabel = '企业审核面试中'; statusColor = 'bg-blue-100 text-blue-700'; }
-                else if(app.status === 'hired') { statusLabel = '已录用待打款'; statusColor = 'bg-orange-100 text-orange-700'; pendingEarned += (app.bounty * 0.8 * 0.93); }
-                else if(app.status === 'settled') { statusLabel = '佣金已入账'; statusColor = 'bg-green-100 text-green-700'; }
-
-                let actionBtns = '';
-                if(app.status === 'auth_pending') {
-                    actionBtns = `
-                        <div class="flex space-x-2 mt-2 border-t border-gray-100 pt-2 w-full justify-end">
-                            <button onclick="editC1App(${app.id})" class="text-xs text-indigo-600 whitespace-nowrap truncate hover:text-indigo-800 bg-indigo-50 px-2 py-1 rounded border border-indigo-100 transition"><i class="fa-solid fa-pen-to-square"></i> 修改</button>
-                            <button onclick="deleteC1App(${app.id})" class="text-xs text-red-600 whitespace-nowrap truncate hover:text-red-800 bg-red-50 px-2 py-1 rounded border border-red-100 transition"><i class="fa-solid fa-trash"></i> 撤回</button>
+            container.innerHTML = applications.filter(a => a.c1Id || a.id < 1000).map(app => {
+                const statusMap = { 'auth_pending': ['等待确认', 'bg-gray-100 text-gray-600'], 'received': ['企业审核中', 'bg-blue-100 text-blue-700'], 'unlocked': ['面试中', 'bg-purple-100 text-purple-700'], 'hired': ['已录用', 'bg-orange-100 text-orange-700'], 'settled': ['已结算', 'bg-green-100 text-green-700'] };
+                const [label, color] = statusMap[app.status] || ['未知', 'bg-gray-100'];
+                return `
+                <div class="bg-white border border-gray-200 rounded-lg p-3 text-sm">
+                    <div class="flex justify-between items-start">
+                        <div class="truncate pr-2">
+                            <div class="font-bold text-gray-900">${app.jobTitle}</div>
+                            <div class="text-xs text-gray-500">悬赏 ${app.bounty} 元</div>
                         </div>
-                    `;
-                }
-
-                container.innerHTML += `
-                    <div class="bg-white border border-gray-200 rounded-lg p-3 shadow-sm flex flex-col text-sm">
-                        <div class="flex justify-between items-start w-full">
-                            <div class="truncate pr-2 w-2/3">
-                                <div class="font-bold text-gray-900 truncate pr-2">${app.jobTitle}</div>
-                                <div class="text-xs text-gray-500 mt-0.5">内推目标: ${app.c1Relation || '候选人'} <span class="text-gray-400">|</span> <span class="italic text-gray-400">悬赏: ${app.bounty} 元</span></div>
-                            </div>
-                            <div class="whitespace-nowrap ${statusColor} px-2 py-1 rounded text-xs font-bold border border-opacity-50 shrink-0">
-                                ${statusLabel}
-                            </div>
-                        </div>
-                        ${actionBtns}
-                    </div>`;
-            });
-            document.getElementById('c1PendingEarned').innerText = pendingEarned.toLocaleString();
+                        <span class="${color} px-2 py-0.5 rounded text-xs font-bold shrink-0">${label}</span>
+                    </div>
+                </div>`;
+            }).join('') || '<div class="text-center py-6 text-gray-400 text-sm">暂无推荐记录</div>';
+            document.getElementById('c1PendingEarned').innerText = applications.filter(a => a.status === 'hired').reduce((s, a) => s + a.bounty * 0.8, 0).toLocaleString();
         }
 
-        // --- C2 ROLE (Candidate) ---
+        // C2 Role Functions
         function renderC2View() {
-            const container = document.getElementById('c2PendingList');
+            const pendingContainer = document.getElementById('c2PendingList');
             const historyContainer = document.getElementById('c2HistoryList');
-            container.innerHTML = ''; historyContainer.innerHTML = '';
-
+            pendingContainer.innerHTML = ''; historyContainer.innerHTML = '';
+            
             const pending = applications.filter(a => a.status === 'auth_pending');
             const history = applications.filter(a => a.status !== 'auth_pending');
-
-            // Update pending count badge
+            
             document.getElementById('c2PendingCount').innerText = pending.length;
-
-            if (pending.length === 0) container.innerHTML = '<div class="text-center py-6 bg-gray-50 rounded text-gray-400 text-sm">暂无新邀请</div>';
+            
+            if(pending.length === 0) pendingContainer.innerHTML = '<div class="text-center py-8 text-gray-400">暂无新邀请</div>';
             pending.forEach(app => {
-                container.innerHTML += `
-                    <div class="border border-orange-200 shadow-md rounded-xl p-5 bg-white transition hover:shadow-lg mb-4">
-                        <div class="flex flex-col md:flex-row justify-between md:items-start mb-4">
-                            <div class="mb-3 md:mb-0">
-                                <div class="flex flex-wrap items-center gap-2">
-                                    <span class="bg-orange-100 text-orange-800 text-xs font-bold px-2 py-1 rounded uppercase tracking-wider">NEW 内推邀请</span>
-                                    <span class="text-xs text-gray-400">通过区块链验证的真实推荐</span>
-                                </div>
-                                <h4 class="font-bold text-gray-800 text-xl mt-2">${app.jobTitle}</h4>
-                            </div>
-                            <div class="w-full md:w-auto flex justify-end space-x-2">
-                                <button onclick="declineApp(${app.id})" class="text-gray-500 hover:text-red-500 px-3 py-2 text-sm font-bold transition mr-1 bg-gray-50 rounded"><i class="fa-solid fa-xmark mr-1"></i>婉拒</button>
-                                <button onclick="authorizeResume(${app.id})" class="${state.walletConnected ? 'bg-orange-500 hover:bg-orange-600 text-white' : 'bg-gray-300 text-gray-500 cursor-not-allowed'} px-4 py-2 rounded-lg text-sm font-bold shadow-sm transition transform hover:-translate-y-0.5"><i class="fa-solid fa-signature mr-1"></i> 签名授权解密</button>
-                            </div>
+                pendingContainer.innerHTML += `
+                <div class="border border-orange-200 bg-white rounded-lg p-4 shadow-sm">
+                    <div class="flex justify-between items-start mb-3">
+                        <div>
+                            <span class="bg-orange-100 text-orange-700 text-xs font-bold px-2 py-0.5 rounded">NEW 内推邀请</span>
+                            <h4 class="font-bold text-gray-900 mt-2">${app.jobTitle}</h4>
                         </div>
-                        <div class="bg-orange-50 p-4 rounded-lg border border-orange-100">
-                            <div class="flex items-start">
-                                <i class="fa-solid fa-quote-left text-orange-300 text-xl mr-3 mt-1"></i>
-                                <div>
-                                    <p class="text-gray-700 italic">"这是为你争取到的独家内推机会！${app.c1Pitch || '这个岗位非常契合你的背景，强烈推荐！'}"</p>
-                                    <p class="text-xs text-gray-500 mt-2">— 推荐人节点 (关系: <span class="font-medium text-orange-600">${app.c1Relation || '前同事'}</span>)</p>
-                                    
-                                </div>
-                            </div>
-                        </div>
-                    </div>`;
+                    </div>
+                    <div class="bg-orange-50 p-3 rounded mb-3 text-sm">
+                        <p class="italic text-gray-700">"${app.c1Pitch || '这个岗位非常契合你的背景'}"</p>
+                        <p class="text-xs text-gray-500 mt-1">— 推荐人 (${app.c1Relation || '前同事'})</p>
+                    </div>
+                    <div class="flex gap-2">
+                        <button onclick="declineApp(${app.id})" class="flex-1 bg-gray-100 text-gray-600 px-3 py-2 rounded text-sm font-medium">婉拒</button>
+                        <button onclick="authorizeResume(${app.id})" class="flex-1 ${state.walletConnected ? 'bg-orange-500 hover:bg-orange-600' : 'bg-gray-300'} text-white px-3 py-2 rounded text-sm font-bold">
+                            <i class="fa-solid fa-signature mr-1"></i> 签名授权
+                        </button>
+                    </div>
+                </div>`;
             });
-
-            if (history.length === 0) historyContainer.innerHTML = '<div class="text-center py-6 bg-gray-50 rounded text-gray-400 text-sm">暂无历史记录</div>';
+            
+            if(history.length === 0) historyContainer.innerHTML = '<div class="text-center py-6 text-gray-400 text-sm">暂无历史</div>';
             history.forEach(app => {
-                let statusHtml = '';
-                if(app.status === 'received') statusHtml = '<span class="text-blue-600 font-bold text-xs">企业未读</span>';
-                else if(app.status === 'unlocked') statusHtml = '<span class="text-purple-600 font-bold text-xs">面试流程中</span>';
-                else if(app.status === 'hired') statusHtml = '<span class="text-orange-600 font-bold text-xs">拿到 Offer</span>';
-                else if(app.status === 'settled') statusHtml = '<span class="text-green-600 font-bold text-xs">入职期满</span>';
-                else if(app.status === 'declined') statusHtml = '<span class="text-red-500 font-bold text-xs">已婉拒</span>';
-
+                const statusMap = { 'received': '企业未读', 'unlocked': '面试中', 'hired': '已Offer', 'settled': '已入职', 'declined': '已婉拒' };
                 historyContainer.innerHTML += `
-                    <div class="bg-white border border-gray-200 rounded p-3 flex justify-between text-sm shadow-sm mb-2 opacity-80">
-                        <div class="font-bold text-gray-800 pr-2 truncate">${app.jobTitle}</div>
-                        <div class="shrink-0">${statusHtml}</div>
-                    </div>`;
+                <div class="bg-white border border-gray-200 rounded p-2 flex justify-between text-sm">
+                    <span class="font-bold text-gray-800 truncate pr-2">${app.jobTitle}</span>
+                    <span class="text-xs ${app.status === 'settled' ? 'text-green-600' : app.status === 'declined' ? 'text-red-500' : 'text-blue-600'} font-bold">${statusMap[app.status]}</span>
+                </div>`;
             });
+            
             renderC2Resumes();
         }
 
         function renderC2Resumes() {
             const container = document.getElementById('c2ResumesList');
-            container.innerHTML = '';
-            resumes.forEach(r => {
-                container.innerHTML += `
-                    <div class="bg-white border border-gray-200 rounded p-3 flex justify-between items-center text-sm shadow-sm">
-                        <span class="font-bold"><i class="fa-solid fa-file-lines text-indigo-500 mr-2"></i>${r.title}</span>
-                    </div>`;
-            });
+            container.innerHTML = resumes.map(r => `
+                <div class="bg-white border border-gray-200 rounded p-2 flex items-center text-sm">
+                    <i class="fa-solid fa-file-lines text-indigo-500 mr-2"></i>
+                    <span class="font-bold">${r.title}</span>
+                </div>
+            `).join('');
         }
-        function openResumeModal() { 
-            const form = document.getElementById('resumeForm');
-            if(form) form.reset();
+
+        function openResumeModal() {
             document.getElementById('resumeModal').classList.remove('hidden');
-            document.getElementById('resumeModal').style.display = 'block'; 
+            document.getElementById('resumeModal').style.display = 'block';
         }
+
         function closeResumeModal() { document.getElementById('resumeModal').style.display = 'none'; }
+
         function saveResume(e) {
             e.preventDefault();
-            const input = document.getElementById('resumeTitleInput');
-            const title = input && input.value ? input.value : '新简历';
-            resumes.push({ id: Date.now(), title: title, content: '', updatedAt: '今天' });
+            const title = document.getElementById('resumeTitleInput').value;
+            resumes.push({ id: Date.now(), title });
             closeResumeModal();
-            renderC2View();
-            alert("✅ 简历保存成功！");
+            renderC2Resumes();
+            alert('✅ 简历保存成功');
         }
 
         function declineApp(appId) {
-            const reason = prompt("请简要说明婉拒理由（将反馈给推荐人）：", "近期暂不考虑看机会，感谢您的推荐！");
-            if(reason !== null) {
-                const app = applications.find(a => a.id === appId);
-                if(app) { app.status = "declined"; app.declineReason = reason; renderC2View(); alert("已成功婉拒，并自动回复推荐人。"); }
-            }
+            const app = applications.find(a => a.id === appId);
+            if(app) { app.status = 'declined'; renderC2View(); alert('已婉拒'); }
         }
 
         function authorizeResume(appId) {
-            if(!state.walletConnected) return alert('请先在右上角模拟连接钱包！');
-            setTimeout(() => {
-                const app = applications.find(a => a.id === appId);
-                if(app) app.status = 'received';
-                alert("✅ 签名授权成功！加密简历已投递给用人企业。");
-                renderC2View();
-            }, 500);
+            if(!state.walletConnected) return alert('请先连接钱包');
+            const app = applications.find(a => a.id === appId);
+            if(app) app.status = 'received';
+            alert('✅ 签名授权成功！简历已投递给企业');
+            renderC2View();
         }
 
-        // --- ADMIN ROLE ---
+        function switchToC1() {
+            loginAs('c1-role');
+            alert('✅ 已切换为C1推荐人模式，账号信用体系互通');
+        }
+
+        // Admin Functions
         function updateAdminDashboard() {
             updateTVL();
             document.getElementById('adminPayouts').innerText = globalData.payoutsGross.toLocaleString();
             document.getElementById('adminRevenue').innerText = globalData.revenueNet.toLocaleString();
             document.getElementById('adminTax').innerText = globalData.taxTotal.toLocaleString();
-
+            
             const progContainer = document.getElementById('adminInProgressList');
             const settledContainer = document.getElementById('adminSettledList');
             progContainer.innerHTML = ''; settledContainer.innerHTML = '';
-
+            
             const inProg = applications.filter(a => a.status !== 'auth_pending' && a.status !== 'declined' && a.status !== 'settled');
             const settled = applications.filter(a => a.status === 'settled');
-
-            if(inProg.length === 0) progContainer.innerHTML = `<div class="bg-gray-50 p-4 rounded text-center text-gray-400 text-sm">暂无流转中的订单</div>`;
+            
+            if(inProg.length === 0) progContainer.innerHTML = '<div class="text-center py-6 text-gray-400 text-sm">暂无流转中订单</div>';
             inProg.forEach(app => {
-                const isReady = app.status === 'hired';
-                let tag = `<span class="text-blue-600 bg-blue-50 px-2 py-0.5 rounded text-xs font-bold border border-blue-200">企业面试中</span>`;
-                let btn = '';
-                if(isReady) {
-                    tag = `<span class="text-orange-600 bg-orange-50 px-2 py-0.5 rounded text-xs font-bold border border-orange-200">待预言机清算</span>`;
-                    btn = `<button onclick="triggerPayout(${app.id})" class="w-full mt-3 bg-purple-600 text-white py-2 rounded font-bold text-sm shadow-sm hover:bg-purple-700 transition">触发智能合约自动清算分账</button>`;
-                }
-
                 progContainer.innerHTML += `
-                    <div class="bg-white border ${isReady ? 'border-purple-300 shadow-md' : 'border-gray-200'} rounded-lg p-4">
-                        <div class="flex justify-between items-center mb-2">
-                            <h4 class="font-bold text-gray-900">${app.jobTitle}</h4>
-                            ${tag}
-                        </div>
-                        <div class="text-xs text-gray-500">订单总悬赏金池: <strong class="text-gray-800">${app.bounty.toLocaleString()} 元</strong></div>
-                        ${btn}
-                    </div>`;
+                <div class="bg-white border border-gray-200 rounded-lg p-4">
+                    <div class="flex justify-between items-center">
+                        <h4 class="font-bold text-gray-900">${app.jobTitle}</h4>
+                        <span class="bg-blue-50 text-blue-700 px-2 py-0.5 rounded text-xs font-bold">${app.status === 'hired' ? '待清算' : '审核中'}</span>
+                    </div>
+                    <p class="text-xs text-gray-500 mt-1">悬赏 ${app.bounty} | C1靠谱度 ${app.c1TrustScore || 92}</p>
+                    ${app.status === 'hired' ? `<button onclick="triggerPayout(${app.id})" class="mt-2 w-full bg-purple-600 text-white py-1.5 rounded text-xs font-bold">触发清算</button>` : ''}
+                </div>`;
             });
-
-            if(settled.length === 0) settledContainer.innerHTML = `<div class="bg-gray-50 p-4 rounded text-center text-gray-400 text-sm">暂无已清算的订单</div>`;
+            
+            if(settled.length === 0) settledContainer.innerHTML = '<div class="text-center py-6 text-gray-400 text-sm">暂无已清算订单</div>';
             settled.forEach(app => {
-                // Financial Rules
-                const bounty = app.bounty;
-                const c1Gross = bounty * 0.8;
-                const c1Tax = c1Gross * 0.07; // 7% tax
-                const c1Net = c1Gross - c1Tax;
-                
-                const platGross = bounty * 0.2;
-                const platTax = platGross * 0.15; // 15% tax
-                const platNet = platGross - platTax;
-
                 settledContainer.innerHTML += `
-                    <div class="bg-white border border-green-200 rounded-lg p-4 shadow-sm relative overflow-hidden">
-                        <div class="absolute right-[-25px] top-[15px] bg-green-500 text-white text-[10px] font-bold py-1 px-8 transform rotate-45 shadow">SETTLED</div>
-                        <h4 class="font-bold text-gray-900 mb-1">${app.jobTitle}</h4>
-                        <div class="text-xs text-gray-500 mb-3 border-b border-gray-100 pb-2">总交易额: <strong>${bounty.toLocaleString()} 元</strong> (TxID: 0x8a9b...f3e)</div>
-                        
-                        <div class="space-y-1.5 text-xs font-mono">
-                            <div class="flex justify-between text-gray-700"><span>节点 (C1) 税前:</span> <span>${c1Gross.toLocaleString()} 元</span></div>
-                            <div class="flex justify-between text-red-500"><span>↳ 代扣个税:</span> <span>- ${c1Tax.toLocaleString()} 元</span></div>
-                            <div class="flex justify-between font-bold text-green-700 pb-1 border-b border-dashed border-gray-200"><span>↳ C1 实际到账:</span> <span>+ ${c1Net.toLocaleString()} 元</span></div>
-                            
-                            <div class="flex justify-between text-gray-700 pt-1"><span>平台协议费:</span> <span>${platGross.toLocaleString()} 元</span></div>
-                            <div class="flex justify-between text-red-500"><span>↳ 平台增值税:</span> <span>- ${platTax.toLocaleString()} 元</span></div>
-                            <div class="flex justify-between font-bold text-purple-700"><span>↳ 平台净收益:</span> <span>+ ${platNet.toLocaleString()} 元</span></div>
-                        </div>
-                    </div>`;
+                <div class="bg-white border border-green-200 rounded-lg p-4 relative">
+                    <div class="absolute top-2 right-2 bg-green-500 text-white text-[10px] font-bold px-2 py-0.5 rounded transform rotate-12">SETTLED</div>
+                    <h4 class="font-bold text-gray-900">${app.jobTitle}</h4>
+                    <p class="text-xs text-gray-500">总悬赏 ${app.bounty} | C1 ${app.bounty * 0.8} | 平台 ${app.bounty * 0.2}</p>
+                </div>`;
             });
+        }
+
+        function renderTalentDatabase() {
+            const container = document.getElementById('talentDatabaseList');
+            container.innerHTML = talentDatabase.map(t => `
+                <div class="bg-white border border-gray-200 rounded-lg p-3 flex justify-between items-center">
+                    <div class="flex items-center">
+                        <div class="w-10 h-10 bg-gradient-to-br from-indigo-400 to-purple-500 rounded-full flex items-center justify-center text-white font-bold mr-3">${t.name[0]}</div>
+                        <div>
+                            <h4 class="font-bold text-gray-900">${t.name}</h4>
+                            <div class="flex gap-1 mt-1">
+                                ${t.tags.map(tag => `<span class="bg-gray-100 text-gray-600 px-2 py-0.5 rounded text-xs">${tag}</span>`).join('')}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="text-right">
+                        <p class="text-xl font-black text-indigo-600">${t.score}</p>
+                        <p class="text-xs text-gray-400">C1:${t.c1Count} B端:${t.bFeedbackCount}</p>
+                    </div>
+                </div>
+            `).join('');
         }
 
         function triggerPayout(appId) {
-            const btn = event.currentTarget;
-            btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin mr-1"></i> 合约清算执行中...';
-            
-            setTimeout(() => {
-                const appIndex = applications.findIndex(a => a.id === appId);
-                if(appIndex > -1) {
-                    const app = applications[appIndex];
-                    app.status = 'settled';
-                    
-                    const bounty = app.bounty;
-                    const c1Gross = bounty * 0.8;
-                    const c1Tax = c1Gross * 0.07;
-                    const c1Net = c1Gross - c1Tax;
-                    const platGross = bounty * 0.2;
-                    const platTax = platGross * 0.15;
-                    const platNet = platGross - platTax;
-
-                    globalData.payoutsGross += c1Gross;
-                    globalData.revenueNet += platNet;
-                    globalData.taxTotal += (c1Tax + platTax);
-                    globalData.c1TotalEarned += c1Net; // update C1 personal earning
-                }
-                alert(`🎉 智能合约清算执行完毕！\n资金已根据规则实时切分到 C1钱包、国税金库与平台金库。`);
-                updateAdminDashboard();
-            }, 1000);
+            const app = applications.find(a => a.id === appId);
+            if(app) app.status = 'settled';
+            globalData.payoutsGross += app.bounty * 0.8;
+            globalData.c1TotalEarned += app.bounty * 0.8 * 0.93;
+            alert('✅ 智能合约清算完成！资金已分账');
+            updateAdminDashboard();
         }
 
+        function updateTVL() {
+            const tvl = jobs.filter(j => j.status === 'locked').reduce((s, j) => s + j.bounty, 0);
+            document.getElementById('adminTVL').innerText = tvl.toLocaleString() + ' 元';
+        }
+
+        function openJobModal() {
+            document.getElementById('jobModal').classList.remove('hidden');
+            document.getElementById('jobModal').style.display = 'block';
+        }
+
+        function closeJobModal() { document.getElementById('jobModal').style.display = 'none'; }
+
+        function setHalfBounty() {
+            const s = parseInt(document.getElementById('jobSalary').value) || 0;
+            document.getElementById('jobBounty').value = s / 2;
+        }
+
+        function saveJob(e) {
+            e.preventDefault();
+            const newJob = {
+                id: Date.now(),
+                title: document.getElementById('jobTitle').value,
+                salary: parseInt(document.getElementById('jobSalary').value),
+                bounty: parseInt(document.getElementById('jobBounty').value),
+                status: 'pending'
+            };
+            jobs.unshift(newJob);
+            closeJobModal();
+            renderJobs();
+            alert('✅ 职位发布成功');
+        }
     </script>
 </body>
 </html>
